@@ -1,0 +1,231 @@
+<style type="text/css">
+    .head {
+        font-size: 12px;
+        height: 25px;
+    }
+    label {
+        font-size: 16px;
+    }
+    .question {
+        color: #fff;
+        border-radius: 0px;
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 1%;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .question:hover {
+        opacity: 0.95;
+        box-shadow: 0px 10px 20px 0 rgba(17, 240, 206, 0.26);
+    }
+    .zero {
+        background-color: #5bc0de;
+    }
+    .nonzero {
+        background-color: #5cb85c;
+    }
+    .nostar {
+        line-height: 50px;
+    }
+    .star {
+        line-height: 135%;
+    }
+    .ansmr {
+        background-color: #8a6d3b;
+    }
+    .rep {
+        display: none;
+    }
+</style>
+<div layout="row" layout-margin layout-padding>
+
+    <md-toolbar style="z-index:0;">
+    <h2 class="md-toolbar-tools">
+        <span class="text-center">TCS Aptitude Test</span>
+    </h2>
+</md-toolbar>
+</div>
+<div layout-sm="column" layout-gt-md="row"  ng-hide="showInstructions"    ng-class="{'rep':showReport}" layout-margin layout-padding>
+    
+    <md-whiteframe class="md-whiteframe-z3"   layout-fill >
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 brand ">
+        <div layout-sm="column"  src="" class="brand_image1 col-lg-12">
+            <img src="./assets/images/favicon.png" height="80px" width="auto" style="float:left;" />
+            <h2 class="text-primary pull-left">e-test</h2>
+            <div class="pull-right">
+                <img src="./assets/images/tcs_logo.png" height="40px" width="148px" class="pull-right" style="float:right !important;">
+            </div>
+            
+
+        </div>
+        <!--<div class="col-lg-12">
+            <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 ">
+                <i class="fa fa-clock-o text-primary"></i><span class="text-primary"> {{minutes}} </span>m <span class="text-primary">{{seconds}} </span>s
+            </div>
+            <div class="col-xs-8 col-sm-9 col-md-9 col-lg-9 head ">
+                <span class="text-success"><i class="fa fa-square"></i>Answered </span>&nbsp;&nbsp;
+                <span class="text-warning"><i class="fa fa-square"></i>Answered and Marked for Review </span>&nbsp;&nbsp;
+                <span class="text-primary"><i class="fa fa-star"> Carries higher marks</i></span> 
+            </div>
+            
+            <hr/>
+            <hr/>
+        </div>-->
+        <md-content layout-sm="column" layout-gt-sm="row" layout-fill style="font-size:14px;"  >
+        <div layout="row" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <i class="fa fa-clock-o text-primary"></i>
+            <span class="text-primary"> {{minutes}} </span>m 
+            <span class="text-primary">{{seconds}} </span>s
+        </div>
+            <div layout="row" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <span class="text-success">
+                    <i class="fa fa-square"></i>Answered
+                </span>&nbsp;&nbsp;
+            </div>
+            <div layout="row" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <span class="text-warning">
+                    <i class="fa fa-square"></i>Answered and Marked for Review
+                </span>&nbsp;&nbsp;
+            </div>
+            <div layout="row" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <span class="text-primary">
+                    <i class="fa fa-star"> Carries higher marks</i>
+                </span>
+            </div>
+        </md-content>
+        <hr/>
+
+        <nav>
+            <ul class="pager">
+                <li class="previous" ng-disabled="first" ng-hide="first"><a ng-href="javascript:void(0);" ng-click="previous();"><i class="fa fa-hand-o-left"></i> Previous</a>
+                </li>
+                <li>
+                    <label class="text-muted" style="font-size:16px;">Showing Question <span class="text-primary" style="font-size:22px;"><strong> {{currentQuestion.id}} </strong></span> of {{questions.length}}</label>
+                </li>
+                <li class="next" ng-disabled="last" ng-hide="last"><a ng-href="javascript:void(0);" ng-click="next();">Next <i class="fa fa-hand-o-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div class="alert-message alert-message-info text-info text-justify" style="margin-bottom:100px;">
+            <label>{{currentQuestion.question}}
+            </label>
+        </div>
+
+        <div class="offer offer-success">
+            <div class="shape" style="border-width: 0 60px 60px 0;">
+                <div class="shape-text">
+                    Answer
+                </div>
+            </div>
+            <div class="offer-content" style="padding:14px;">
+                <p layout="row" layour-align="start start" class="text-muted pull-left" style="font-size:14px;">
+                    <md-checkbox ng-model="currentQuestion.mr"  ng-disabled="currentQuestion.ans==0" ng-change="markForReview()"  aria-label="Mark for Review" style="margin:0px;">
+                        Mark for Review 
+                    </md-checkbox> 
+                    <label>   |  </label>
+                    <label><a ng-href="javascript:void(0);" ng-click="reset()">  Reset Answer</a></label>
+                </p>
+                <br/>
+                <!-- Radio Groups
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="text-success" style="background-color:white;">
+                            <input type="radio" ng-model="selected" ng-checked="currentQuestion.ans==1" name="option" ng-change="change(1)" id="option5" value="1" />{{ currentQuestion.option1}}</td>
+
+                        <td class="text-success" style="background-color:white;">
+                            <input type="radio" ng-model="selected" name="option" id="option5" ng-checked="currentQuestion.ans==2" ng-change="change(2)" value="2" />{{ currentQuestion.option2}}</td> 
+                        <td class="text-success" style="background-color:white;">
+                            <input type="radio" ng-model="selected" name="option" id="option5" ng-checked="currentQuestion.ans==3" ng-change="change(3)" value="3" />{{ currentQuestion.option3}}</td>
+                        <td class="text-success" style="background-color:white;">
+                            <input type="radio" ng-model="selected" name="option" id="option5" ng-checked="currentQuestion.ans==4" ng-change="change(4)" value="4" />{{ currentQuestion.option4}}</td>
+
+
+                    </tr>
+                </table>
+                -->
+                <span layout="column" layout-fill layout-align="start start">
+                    <md-radio-group layout="column" layout-align="start start" ng-model="selected" ng-change="change(selected);"  >
+                        <md-radio-button  ng-checked="currentQuestion.ans==1" name="option"   ng-value="1"  aria-label="{{ currentQuestion.option1 }}">
+                            {{ currentQuestion.option1 }}
+                        </md-radio-button>
+                        <md-radio-button  ng-checked="currentQuestion.ans==2" name="option"   ng-value="2"  aria-label="{{ currentQuestion.option2 }}">
+                            {{ currentQuestion.option2 }}
+                        </md-radio-button>
+                        <md-radio-button  ng-checked="currentQuestion.ans==3" name="option"   ng-value="3"  aria-label="{{ currentQuestion.option3 }}">
+                            {{ currentQuestion.option3 }}
+                        </md-radio-button>
+                        <md-radio-button  ng-checked="currentQuestion.ans==4" name="option"   ng-value="4"  aria-label="{{ currentQuestion.option4 }}">
+                            {{ currentQuestion.option4 }}
+                        </md-radio-button>
+                    </md-radio-group>
+                </span>
+                
+            </div>
+
+        </div>
+        
+        <md-button class="md-raised md-primary pull-left "  ng-disabled="currentQuestion.ans==0" ng-click="submitAnswer()" style="text-transform: capitalize;">Submit Answer</md-button>
+        <md-button class="md-raised md-primary pull-left" style="margin-left:20px;text-transform: capitalize;" ng-click="skip()">Skip This Question</md-button>
+        
+
+        <br/>
+        <br/>
+
+        <nav>
+            <ul class="pager">
+                <li class="previous" ng-disabled="first" ng-hide="first"><a ng-href="javascript:void(0);" ng-click="previous();"><i class="fa fa-hand-o-left"></i> Previous</a>
+                </li>
+                <li>
+                    <label class="text-muted" style="font-size:16px;">Showing Question <span class="text-primary" style="font-size:22px;"><strong> {{currentQuestion.id}} </strong></span> of {{questions.length}}</label>
+                </li>
+                <li class="next" ng-disabled="last" ng-hide="last"><a ng-href="javascript:void(0);" ng-click="next();">Next <i class="fa fa-hand-o-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <hr/>
+
+
+        <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 ">
+            <i class="fa fa-clock-o text-primary"></i><span class="text-primary"> {{minutes}} </span>m <span class="text-primary">{{seconds}} </span>s
+        </div>
+        <div class="col-xs-8 col-sm-9 col-md-9 col-lg-9 head ">
+            <span class="text-success"><i class="fa fa-square"></i>Answered </span>&nbsp;&nbsp;
+            <span class="text-warning"><i class="fa fa-square"></i>Answered and Marked for Review </span>&nbsp;&nbsp;
+            <span class="text-primary"><i class="fa fa-star"> Carries higher marks</i></span> 
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+        <div class="brand text-justify" style="width:100%;">
+
+            <div style="" class="question text-center col-xs-1 col-sm-2 col-md-2 col-lg-2" ng-repeat="no in questions track by $index" ng-class="
+                                                                                                                                                 {
+                                                                                                                                                 'zero':no.ans==0,
+                                                                                                                                                 'nonzero':no.ans>0 &amp;&amp; no.mr==false,
+                                                                                                                                                 'ansmr':no.ans>0 &amp;&amp; no.mr,
+                                                                                                                                                 'star':no.star,
+                                                                                                                                                 'nostar':no.star==false
+                                                                                                                                                 }" ng-click="getQuestion(no.id);">{{$index+1}}
+                <i class="fa fa-star" ng-show="no.star"></i>
+            </div>
+            <md-button class="md-raised md-primary btn btn-success btn-lg btn-block" ng-click="endTest()">Submit Test</md-button>
+            <div ng-include=' "./app/views/calculator.html" ' style="margin-top:10px;">
+
+                
+                
+            </div>
+
+        </div>
+    </div>
+    </md-whiteframe>
+
+</div>
+
+<div layout="row" layout-margin layout-padding ng-show="showInstructions" ng-include=' "./app/views/tcs_aptitude_instructions.html" ' id="apt_instructions"></div>
+
+<div layout="column" ng-show="showReport" layout-fill layout-margin layout-padding class="container brand text-primary"  ng-include=' "./app/views/tcs_aptitude_report.html" '></div>

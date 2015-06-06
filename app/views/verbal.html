@@ -1,0 +1,54 @@
+<style type="text/css">
+</style>
+
+<div layout="column" layout layout-margin layout-padding>
+    <md-toolbar style="z-index:0;">
+        <h2 class="md-toolbar-tools">
+            <span class="text-center">Vebal Test</span>
+        </h2>
+    </md-toolbar>
+<div class="brand" layout-sm="column" layout-gt-md="row"  >
+
+    <div class="col-xs-12 col-sm-6 col-lg-4 ">
+        <div src="" class="brand_image" style="background-color:#fff;">
+            <img src="./assets/images/tcs_logo.png" width="100%" height="150px" />
+            <div class="text-center"  style="line-height:150px;color:white;font-size:200%">TCS Verbal Test</div>
+            <div class="tag">
+              <a ng-href="http://www.tcs.com" target="_blank">TCS</a>
+            </div>
+        </div>
+        <div class="brand" style="min-height:200px;margin-bottom:20px;">
+            <a href="" class="text-info btn btn-info btn-block" ng-click="selectTCSVerbalTestSet($event)"><i class="fa fa-hand-o-right"></i> TCS Verbal Ability Test <md-tooltip>TCS Verbal Ability Test</md-tooltip> </a>
+
+
+            <h3 class="text-info"><i class="fa fa-eye"></i>See More!<md-tooltip>You gonna love this!</md-tooltip></h3>
+            <a class="btn btn-primary btn-block" ui-sref="Aptitude">TCS Analytical Ability Test <md-tooltip>TCS Analytical Ability Test</md-tooltip> </a>
+
+            <br/>
+            <!--<span class="facebook btn btn-primary btn-small"><i class="fa fa-facebook"></i> share</span>
+            <span class="google btn btn-danger"><i class="fa fa-google"></i> share</span>
+            <span class="twitter btn btn-info"><i class="fa fa-twitter"></i> tweet</span>-->
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-4 " ng-repeat="verbal in verbals">
+        <div src="" class="brand_image" style="background-image: url('./assets/images/tile-bg-{{verbal.id%9}}.png ');">
+            <div class="text-center" style="line-height:150px;color:white;font-size:200%">{{verbal.name}}</div>
+            <div class="tag">
+              <a ng-href="https://www.google.co.in/search?q={{verbal.company}}" target="_blank">  {{verbal.company}}</a>
+            </div>
+        </div>
+        <div class="brand text-muted text-center" style="min-height:200px;margin-bottom:20px;">
+            <h2>{{verbal.heading}}</h2>
+            <br/>
+            <!--<span class="facebook btn btn-primary btn-small"><i class="fa fa-facebook"></i> share</span>
+            <span class="google btn btn-danger"><i class="fa fa-google"></i> share</span>
+            <span class="twitter btn btn-info"><i class="fa fa-twitter"></i> tweet</span>-->
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</div>

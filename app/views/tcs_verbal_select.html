@@ -1,0 +1,31 @@
+
+<md-dialog  aria-label="Select a set">
+    <md-content>
+        <md-subheader class="md-sticky-no-effect text-center" style="background-color: #dcedc8; margin-left:0px !important;margin-right:0px !important;">Select a TCS Verbal Set </md-subheader>
+
+        <div ng-controller="verbalTabController" class="sample">
+            <md-tabs md-selected="selectedIndex">
+                <md-tab ng-repeat="set in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"  md-on-select="showToast($index+1);" md-on-deselect="" ng-disabled="tab.disabled" label="Set {{$index+1}}">
+                    <div class="demo-tab tab{{$index%4}}" layout="column" layout-fill layout-align="space-around center">
+                        <!-- <div ng-bind="tab.content"></div> -->
+
+                    </div>
+                </md-tab>
+            </md-tabs>
+
+        </div>
+
+        <div ng-include=' "./app/views/tcs_verbal_instructions.html" '></div>
+
+    </md-content>
+    <div class="md-actions" layout="row">
+
+        <span flex></span>
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+        <md-button ng-click="proceed()" class="md-primary">
+            Proceed
+        </md-button>
+    </div>
+</md-dialog>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html ng-app="etest" ng-controller="mainController">
+
+<head>
+
+  <link href='./assets/images/favicon.png' rel='icon' type='image/x-icon' />
+  <title ng-bind="title">e-test: Free Online Verbal and Aptitude Test for TCS, IBM, Infosys</title>
+  <meta name="description" content="Aptitude, CAT,TCS Placement preparation and free online mock test platform to help you engage, analyze and impove your skills."/>
+  <meta name="keywords" content="e-test, etest, online verbal test, online aptitude test, online TCS verbal ability test, online TCS aptitude test, TCS verbal email writing, TCS Analytical Ability Test, TCS placement preparation, Mu Sigma placement preparation, TCS Verbal Test Simulator, TCS Verbal Test Simulator Chrome App, TCS Placement Papers for 2015 Batch, TCS Placement 2015, TCS Placement Papers,How to Prepare for TCS, Aptitude, Exam preparation free, free online mock test solutions, test answers"/>
+
+
+  <!-- Meta-Information -->
+  <meta content='u-1YTWR43-tQUre9pvFBaHpYE6A' name='alexaVerifyID' />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content='Vikash Verma | VIK | VIKKU' name='author' />
+  <!--
+  <meta content='{{description}}' name='description' />
+  <meta content='{{keywords}}' name='keywords' />-->
+
+  <link rel="me" href="https://plus.google.com/+VikashVerma" />
+  <link href='https://plus.google.com/+VikashVerma' rel='author' />
+  <link href='https://plus.google.com/+VikashVerma' rel='publisher' />
+  <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css"> -->
+  <!-- include the core styles -->
+  <link rel="stylesheet" href="assets/css/alertify.core.css" />
+  <!-- include a theme, can be included into the core instead of 2 separate files -->
+  <link rel="stylesheet" href="assets/css/alertify.default.css" />
+  <link rel="stylesheet" href="assets/css/testimonial.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
+
+  <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here
+    <link rel="stylesheet" href="assets/css/angular-material.min.css">-->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body onpaste="return false;">
+
+
+  <!-- Our Website Content Goes Here -->
+  <div ng-include='"templates/header.html"'></div>
+
+  <div layout="row" style="padding-top: 50px;">
+    <div ui-view autoscroll="false" flex></div>
+  </div>
+
+  <div ng-include='"templates/footer.html"'></div>
+
+  <!-- Vendor: Javascripts -->
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+  <!--  <script src="./app/vendor/jquery/jquery.min.js"></script>
+    <script src="./app/vendor/bootstrap/bootstrap.min.js"></script> -->
+
+
+  <!-- Angular Material Dependencies -->
+  <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+  <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.1.5/angular-local-storage.min.js"></script>
+
+  <!--<script src="./app/vendor/angular/angular.js"></script>
+    <script src="./app/vendor/angular/angular-ui-router.min.js"></script>
+    <script src="./app/vendor/angular/angular-animate.min.js"></script>
+    <script src="./app/vendor/angular/angular-local-storage.min.js"></script> -->
+
+  <script src="./app/vendor/angular/ngFacebook.js"></script>
+  <script src="./app/vendor/angular/google-plus-signin.js"></script>
+
+  <!-- Angular Material Dependencies
+    <script src="app/vendor/material/hammer.min.js"></script>
+    <script src="app/vendor/material/angular-animate.min.js"></script>
+    <script src="app/vendor/material/angular-aria.min.js"></script> -->
+
+  <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here
+    <script src="app/vendor/material/angular-material.min.js"></script> -->
+
+
+
+  <script src="app.js"></script>
+  <script src="./app/controllers/main.js"></script>
+  <script src="./app/controllers/verbal.js"></script>
+  <script src="./app/controllers/verbalTab.js"></script>
+  <script src="./app/controllers/aptitudeTab.js"></script>
+  <script src="./app/controllers/TCSVerbalTest.js"></script>
+  <script src="./app/controllers/TCSAptitudeTest.js"></script>
+  <script src="./app/controllers/aptitude.js"></script>
+  <script src="./app/controllers/testimonial.js"></script>
+  <script src="./app/controllers/login.js"></script>
+  <script src="./app/controllers/header.js"></script>
+  <script src="./app/controllers/about.js"></script>
+  <script src="./app/controllers/footer.js"></script>
+  <script src="./app/controllers/toast.js"></script>
+  <script src="./app/services/verbalTest.js"></script>
+  <script src="./app/services/aptitudeTest.js"></script>
+  <script src="./app/services/login.js"></script>
+  <script src="./app/services/header.js"></script>
+
+
+  <script src="./app/vendor/alertify/alertify.min.js"></script>
+  <script src="./app/custom/codexgraph.js"></script>
+  <script src="./app/vendor/highcharts/highcharts.js"></script>
+  <script src="./app/vendor/highcharts/highcharts-3d.js"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-58230912-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!-- Start of StatCounter Code for Default Guide -->
+  <script type="text/javascript">
+  var sc_project=10282077;
+  var sc_invisible=1;
+  var sc_security="21812719";
+  var scJsHost = (("https:" == document.location.protocol) ?
+  "https://secure." : "http://www.");
+  document.write("<sc"+"ript type='text/javascript' src='" +
+  scJsHost+
+  "statcounter.com/counter/counter.js'></"+"script>");
+  </script>
+
+</body>
+
+</html>

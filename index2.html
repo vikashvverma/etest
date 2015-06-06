@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html ng-app="etest" ng-controller="mainController">
+
+<head>
+
+  <link href='./assets/images/favicon.png' rel='icon' type='image/x-icon' />
+
+  <title>{{title}}</title>
+
+  <!-- Meta-Information -->
+  <meta content='u-1YTWR43-tQUre9pvFBaHpYE6A' name='alexaVerifyID' />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="etest : Programming Geek">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content='Vikash Verma | VIK | VIKKU' name='author' />
+  <meta content='{{description}}' name='description' />
+  <meta content='{{keywords}}' name='keywords' />
+
+  <link rel="me" href="https://plus.google.com/+VikashVerma" />
+  <link href='https://plus.google.com/+VikashVerma' rel='author' />
+  <link href='https://plus.google.com/+VikashVerma' rel='publisher' />
+  <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css"> -->
+  <!-- include the core styles -->
+  <link rel="stylesheet" href="assets/css/alertify.core.css" />
+  <!-- include a theme, can be included into the core instead of 2 separate files -->
+  <link rel="stylesheet" href="assets/css/alertify.default.css" />
+  <link rel="stylesheet" href="assets/css/testimonial.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
+
+  <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here
+    <link rel="stylesheet" href="assets/css/angular-material.min.css">-->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+  <!-- Our Website Content Goes Here -->
+  <div ng-include='"templates/header.html"'></div>
+
+  <div layout="row" style="padding-top: 50px;">
+    <div ui-view autoscroll="false" flex></div>
+  </div>
+
+  <div ng-include='"templates/footer.html"'></div>
+
+  <!-- Vendor: Javascripts -->
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+  <!--  <script src="./app/vendor/jquery/jquery.min.js"></script>
+    <script src="./app/vendor/bootstrap/bootstrap.min.js"></script> -->
+
+
+  <!-- Angular Material Dependencies -->
+  <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+  <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.1.5/angular-local-storage.min.js"></script>
+
+  <!--<script src="./app/vendor/angular/angular.js"></script>
+    <script src="./app/vendor/angular/angular-ui-router.min.js"></script>
+    <script src="./app/vendor/angular/angular-animate.min.js"></script>
+    <script src="./app/vendor/angular/angular-local-storage.min.js"></script> -->
+
+  <script src="./app/vendor/angular/ngFacebook.js"></script>
+  <script src="./app/vendor/angular/google-plus-signin.js"></script>
+
+  <!-- Angular Material Dependencies
+    <script src="app/vendor/material/hammer.min.js"></script>
+    <script src="app/vendor/material/angular-animate.min.js"></script>
+    <script src="app/vendor/material/angular-aria.min.js"></script> -->
+
+  <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here
+    <script src="app/vendor/material/angular-material.min.js"></script> -->
+
+
+
+    <script src="app.min.js"></script>
+    <script src="./app/controllers/main.min.min.js"></script>
+    <script src="./app/controllers/verbal.min.js"></script>
+    <script src="./app/controllers/verbalTab.min.js"></script>
+    <script src="./app/controllers/aptitudeTab.min.js"></script>
+    <script src="./app/controllers/TCSVerbalTest.min.js"></script>
+    <script src="./app/controllers/TCSAptitudeTest.min.js"></script>
+    <script src="./app/controllers/aptitude.min.js"></script>
+    <script src="./app/controllers/testimonial.min.js"></script>
+    <script src="./app/controllers/login.min.js"></script>
+    <script src="./app/controllers/header.min.js"></script>
+    <script src="./app/controllers/about.min.js"></script>
+    <script src="./app/controllers/footer.min.js"></script>
+    <script src="./app/controllers/toast.min.js"></script>
+    <script src="./app/services/verbalTest.min.js"></script>
+    <script src="./app/services/aptitudeTest.min.js"></script>
+    <script src="./app/services/login.min.js"></script>
+    <script src="./app/services/header.min.js"></script>
+
+
+  <script src="./app/vendor/alertify/alertify.min.js"></script>
+  <script src="./app/custom/codexgraph.js"></script>
+  <script src="./app/vendor/highcharts/highcharts.js"></script>
+  <script src="./app/vendor/highcharts/highcharts-3d.js"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-58230912-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+
+</html>

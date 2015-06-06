@@ -1,0 +1,29 @@
+
+<md-dialog  aria-label="Contact us" >
+  <md-content>
+    <md-subheader class="md-sticky-no-effect text-center" style="background-color: #29b6f6; margin-left:0px !important;margin-right:0px !important;color:white;">Contact us </md-subheader>
+
+    <md-content layout="column" class="md-padding" layout-fill  >
+      <div  flex>
+        <md-text-float label="Name" ng-model="name" required></md-text-float>
+        <md-text-float label="College" ng-model="college"></md-text-float>
+        <md-text-float label="email"  ng-model="email" ></md-text-float>
+
+      </div>
+
+    </md-content>
+    <md-content layout="column">
+      <textarea class="form-control ng-pristine ng-valid" rows="5" cols="50" ng-model="message" placeholder="Write your message..." style="margin-bottom:10px;"></textarea>
+    </md-content>
+
+  </md-content>
+  <div class="md-actions" layout="row">
+
+    <md-button ng-click="cancel()">
+      Cancel
+    </md-button>
+    <md-button class="md-raised md-primary" type="button" ng-click="submit();">
+      Proceed
+    </md-button>
+  </div>
+</md-dialog>

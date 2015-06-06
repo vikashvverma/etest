@@ -1,0 +1,63 @@
+<md-dialog aria-label="SignIn or SignUp" ng-controller="loginController">
+    <md-content>
+
+    <md-tabs class="md-accent" md-selected="selectedIndex">
+        <md-tab id="tab1" aria-controls="tab1-content">
+            Sign In
+        </md-tab>
+        <md-tab id="tab2" aria-controls="tab2-content" >
+            Sign Up
+        </md-tab>
+
+    </md-tabs>
+    <ng-switch on="selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+            <md-content >
+                <form style="padding: 20px;">
+                    <div class="column">
+                        <md-text-float label="Username" ng-model="username"></md-text-float>
+                        <md-text-float label="Password" ng-model="password" type="password"></md-text-float>
+                        <md-button class="md-raised md-primary" ng-type="button" ng-click="signin();">SignIn</md-button>
+                    </div>
+                </form>
+            </md-content>
+        </div>
+        <div role="tabpanel" ng-hide="true"  id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+            <md-content layout="column" >
+                <form style="padding: 20px;" >
+
+                       <div class="row">
+                           <md-text-float label="First Name" ng-model="first_name" required></md-text-float>
+                           <md-text-float label="Last Name" ng-model="last_name" required></md-text-float>
+
+                        </div>
+                       <div class="row">
+                           <md-text-float label="Username" ng-model="username" required></md-text-float>
+                           <md-text-float label="Password" ng-model="password" type="password" required></md-text-float>
+                        </div>
+                       <div class="row">
+                           <md-text-float label="eMail" ng-model="email" type="email" ng-required="required"></md-text-float>
+                           <md-text-float label="College" ng-model="college" type="text" required></md-text-float>
+
+                        </div>
+
+
+                        <md-button class="md-raised md-primary" type="button" ng-click="signup();">SignUp</md-button>
+
+                </form>
+            </md-content>
+        </div>
+    </ng-switch>
+
+
+        <h4 class="text-center">or</h4>
+        <md-divider class="text-center">connect with</md-divider>
+    </md-content>
+    <div class="md-actions" layout="column">
+
+        <div class="after-tabs-area"  layout="column" layout-margin layout-align="left center">
+            <md-button class="md-raised md-primary" ng-click="logme();"><i class="fa fa-facebook"></i> Login with Facebook</md-button>
+
+        </div>
+    </div>
+</md-dialog>
