@@ -7,11 +7,23 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
-  email: { type: String, lowercase: true },
+  first_name:String,
+  last_name:String,
+  username:{type:String},
+  email: { type: String, lowercase: true ,required:true,unique:true},
   role: {
     type: String,
     default: 'user'
   },
+  dob:{type:Date},
+  gender:{type:String},
+  registered_at:{type:Date,default:Date.now},
+  branch:{type:String},
+  entryYear:{type:String},
+  passingYear:{type:String},
+  active:{type:Boolean,default:false},
+  activationCode:{type:String},
+  avatar_url:{type:String},
   hashedPassword: String,
   provider: String,
   salt: String,

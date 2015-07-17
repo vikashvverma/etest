@@ -1,82 +1,248 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Sign up</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="register(form)" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
-          <label>Name</label>
+<md-card flex-sm="100" flex-md="100" flex-gt-sm="50">
+  <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+  <md-card-content>
+    <md-content layout-padding class="autoScroll">
 
-          <input type="text" name="name" class="form-control" ng-model="user.name"
-                 required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
-          </p>
-        </div>
+      <!--<md-input-container class="md-icon-float" >-->
+      <!--&lt;!&ndash; Use floating label instead of placeholder &ndash;&gt;-->
+      <!--<label>Name</label>-->
+      <!--<md-icon md-font-set="fa fa-user fa-2x"></md-icon>-->
+      <!--<input ng-model="vm.user.name" type="text">-->
+      <!--</md-input-container>-->
+      <!--<md-input-container class="md-icon-float" >-->
+      <!--&lt;!&ndash; Use floating label instead of placeholder &ndash;&gt;-->
+      <!--<label>Name</label>-->
+      <!--<md-icon md-font-set="fa fa-user fa-2x"></md-icon>-->
+      <!--<input ng-model="vm.user.name" type="text">-->
+      <!--</md-input-container>-->
+      <form name="registrationform" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
-                                            'has-error': form.email.$invalid && submitted }">
-          <label>Email</label>
+        <md-toolbar>
+          <div class="md-toolbar-tools md-primary ">
+            <h2>
+              <span>Basic Information</span>
+            </h2>
+          </div>
+        </md-toolbar>
+        <!--<div id="thumbnail">-->
+        <!--<img src="./images/avatar_default.png"  id="avatar_default" ng-hide="profile.avatar" ng-click="selectAvatar();" />-->
+        <!--<i class="fa fa-long-arrow-left fa-3px" ng-hide="profile.avatar">Select Profile Picture</i>-->
+        <!--<span id="avatar_thumbnail"  ng-show="profile.avatar" ng-click="selectAvatar();"></span>-->
+        <!--</div>-->
+        <!--<md-input-container class="input-field" style="display:none;" flex>-->
+        <!--<input ng-model="profile.avatar" accept="image/*" id="avatar" type="file" file-upload class="validate">-->
+        <!--</md-input-container>-->
 
-          <input type="email" name="email" class="form-control" ng-model="user.email"
-                 required
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.email.$error.email && submitted">
-            Doesn't look like a valid email.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.required && submitted">
-            What's your email address?
-          </p>
-          <p class="help-block" ng-show="form.email.$error.mongoose">
-            {{ errors.email }}
-          </p>
-        </div>
+        <md-content class="md-padding">
+          <div layout layout-sm="column" layout-md="column">
+            <md-input-container class="input-field" flex>
+              <i class="fa fa-user prefix blue-text"></i>
+              <input ng-model="vm.user.first_name" id="first_name" type="text" class="validate" ng-required="true" aria-label="First Name">
+              <label for="first_name">First Name</label>
+            </md-input-container>
+            <md-input-container class="input-field" flex >
+              <i class="fa fa-user prefix blue-text"></i>
+              <input ng-model="vm.user.last_name" id="last_name" type="text" class="validate" ng-required="true" aria-label="Last Name">
+              <label for="last_name">Last Name</label>
+            </md-input-container>
+          </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
-                                            'has-error': form.password.$invalid && submitted }">
-          <label>Password</label>
+          <div layout layout-sm="column" layout-md="column">
+            <md-input-container class="input-field" flex>
+              <label for="dob">Date of Birth
+              </label>
+              <i class="fa fa-birthday-cake prefix blue-text"></i>
+              <input ng-model="vm.user.dob"  ng-click="clicked();" type="date" id="dob" class=" datepicker" ng-required="true" aria-label="Date of Birth"/>
 
-          <input type="password" name="password" class="form-control" ng-model="user.password"
-                 ng-minlength="3"
-                 required
-                 mongoose-error/>
-          <p class="help-block"
-             ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-            Password must be at least 3 characters.
-          </p>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-            {{ errors.password }}
-          </p>
-        </div>
+              <!--<mb-datepicker element-id='dob'-->
+              <!--input-class="dob"-->
+              <!--input-name="dob"-->
+              <!--arrows="vm.arrows"-->
+              <!--calendar-header="header"-->
+              <!--date="vm.userdate"-->
+              <!--date-format="DD/MM/YYYY" ></mb-datepicker>-->
+            </md-input-container>
+            <md-input-container class="input-field" flex>
+              <i class="fa fa-phone prefix blue-text"></i>
+              <input ng-model="vm.user.mobile" type="tel" id="mobile" class="validate" ng-required="true" aria-label="Mobile Number"/>
+              <label for="mobile">Mobile Number.</label>
+            </md-input-container>
+            <md-radio-group ng-model="vm.user.gender"  style="display:inline-flex;border: 0px dotted transparent; ">
+              <span style="line-height:500%;">Gender</span>
+              <md-radio-button value="M" aria-label="Male" class="md-primary"><i class="fa fa-male fa-3x indigo-text" style="color:dodgerblue;"></i></md-radio-button>
+              <md-radio-button value="F" aria-label="Female" class="md-accent"> <i class="fa fa-female fa-3x pink-text " style="color:deeppink;"></i> </md-radio-button>
+            </md-radio-group>
+          </div>
 
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
-          </button>
-          <a class="btn btn-default btn-lg btn-register" href="/login">
-            Login
-          </a>
-        </div>
 
-        <hr>
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-          <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-            <i class="fa fa-twitter"></i> Connect with Twitter
-          </a>
-        </div>
+
+          <md-content class="md-padding">
+
+            <div layout layout-sm="column" layout-md="column">
+
+              <md-input-container class="input-field" flex>
+                <md-select ng-model="vm.user.branch" md-on-open="vm.loadBranches()" style="min-width: 200px;">
+                  <md-select-label>{{ vm.user.branch ? vm.user.branch : 'Select Branch' }}</md-select-label>
+                  <md-option ng-value="branch" ng-repeat="branch in vm.branches">{{branch}}</md-option>
+                </md-select>
+              </md-input-container>
+
+              <md-input-container flex>
+                <md-select ng-model="vm.user.entryYear" md-on-open="vm.loadYears()" style="min-width: 200px;">
+                  <md-select-label>{{ vm.user.entryYear ? vm.user.entryYear : 'Select Entry Year' }}</md-select-label>
+                  <md-option ng-value="year" ng-repeat="year in vm.years">{{year}}</md-option>
+                </md-select>
+              </md-input-container>
+
+              <md-input-container flex>
+                <md-select ng-model="vm.user.passingYear" md-on-open="vm.loadYears()" style="min-width: 200px;">
+                  <md-select-label>{{ vm.user.passingYear ? vm.user.passingYear : 'Select Passing Year' }}</md-select-label>
+                  <md-option ng-value="year" ng-repeat="year in vm.years">{{year}}</md-option>
+                </md-select>
+              </md-input-container>
+
+
+
+            </div>
+
+
+
+          </md-content>
+
+          <md-toolbar md-theme="bitsaaTheme" class="md-warn">
+            <div class="md-toolbar-tools md-primary ">
+              <h2>
+                <span>Login Information</span>
+              </h2>
+            </div>
+          </md-toolbar>
+          <md-content class="md-padding">
+
+            <div layout layout-sm="column" layout-md="column">
+
+              <md-input-container class="input-field" flex>
+
+                <input ng-model="vm.user.username" id="username" type="text" class="validate" ng-required="true" aria-label="Username">
+                <i class="fa fa-spinner fa-pulse md-warn" ng-show="vm.user.username && usernameExists===undefined"></i>
+                <i class="fa fa-check green-text" ng-show="vm.user.username && usernameExists===false">Available</i>
+                <i class="fa fa-times red-text" ng-show="vm.user.username && usernameExists===true">Not Available</i>
+                <label for="username">username</label>
+              </md-input-container>
+              <md-input-container class="input-field" flex>
+                <input ng-model="vm.user.email" id="email" type="email" class="validate" ng-required="true" aria-label="Email">
+                <i class="fa fa-spinner fa-pulse md-warn" ng-show="vm.user.email && emailExists===undefined"></i>
+                <i class="fa fa-times red-text" ng-show="vm.user.email && emailExists===true">Email already registered!</i>
+                <label for="email">Email ID</label>
+              </md-input-container>
+              <md-input-container class="input-field" flex>
+                <input ng-model="vm.user.password" id="password" type="password" class="validate" ng-required="true" ng-minlength="6" aria-label="Password">
+                <label for="password">Password</label>
+              </md-input-container>
+
+              <md-input-container class="input-field" flex>
+                <input ng-model="vm.user.cPassword" id="cPassword" type="password" class="validate" ng-required="true" ng-minlength="6" aria-label="Confirm Password">
+                <label for="cPassword">Confirm Password</label>
+              </md-input-container>
+
+            </div>
+
+
+
+            <md-button md-theme="bitsaaTheme" class="md-raised md-primary waves-effect waves-light left-align " ng-click="vm.register(registrationform);" ng-disabled="uploading">Join Us <i class="fa fa-send "></i></md-button>
+
+
+          </md-content>
       </form>
-    </div>
+    </md-content>
+  </md-card-content>
+  <div class="md-actions" layout="row" layout-align="end center">
+    <md-button>Action 1</md-button>
+    <md-button>Action 2</md-button>
   </div>
-  <hr>
-</div>
+</md-card>
+
+
+<!--<div ng-include="'components/navbar/navbar.html'"></div>-->
+
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-12">-->
+      <!--<h1>Sign up</h1>-->
+    <!--</div>-->
+    <!--<div class="col-sm-12">-->
+      <!--<form class="form" name="form" ng-submit="register(form)" novalidate>-->
+
+        <!--<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,-->
+                                            <!--'has-error': form.name.$invalid && submitted }">-->
+          <!--<label>Name</label>-->
+
+          <!--<input type="text" name="name" class="form-control" ng-model="user.name"-->
+                 <!--required/>-->
+          <!--<p class="help-block" ng-show="form.name.$error.required && submitted">-->
+            <!--A name is required-->
+          <!--</p>-->
+        <!--</div>-->
+
+        <!--<div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,-->
+                                            <!--'has-error': form.email.$invalid && submitted }">-->
+          <!--<label>Email</label>-->
+
+          <!--<input type="email" name="email" class="form-control" ng-model="user.email"-->
+                 <!--required-->
+                 <!--mongoose-error/>-->
+          <!--<p class="help-block" ng-show="form.email.$error.email && submitted">-->
+            <!--Doesn't look like a valid email.-->
+          <!--</p>-->
+          <!--<p class="help-block" ng-show="form.email.$error.required && submitted">-->
+            <!--What's your email address?-->
+          <!--</p>-->
+          <!--<p class="help-block" ng-show="form.email.$error.mongoose">-->
+            <!--{{ errors.email }}-->
+          <!--</p>-->
+        <!--</div>-->
+
+        <!--<div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,-->
+                                            <!--'has-error': form.password.$invalid && submitted }">-->
+          <!--<label>Password</label>-->
+
+          <!--<input type="password" name="password" class="form-control" ng-model="user.password"-->
+                 <!--ng-minlength="3"-->
+                 <!--required-->
+                 <!--mongoose-error/>-->
+          <!--<p class="help-block"-->
+             <!--ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">-->
+            <!--Password must be at least 3 characters.-->
+          <!--</p>-->
+          <!--<p class="help-block" ng-show="form.password.$error.mongoose">-->
+            <!--{{ errors.password }}-->
+          <!--</p>-->
+        <!--</div>-->
+
+        <!--<div>-->
+          <!--<button class="btn btn-inverse btn-lg btn-login" type="submit">-->
+            <!--Sign up-->
+          <!--</button>-->
+          <!--<a class="btn btn-default btn-lg btn-register" href="/login">-->
+            <!--Login-->
+          <!--</a>-->
+        <!--</div>-->
+
+        <!--<hr>-->
+        <!--<div>-->
+          <!--<a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">-->
+            <!--<i class="fa fa-facebook"></i> Connect with Facebook-->
+          <!--</a>-->
+          <!--<a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">-->
+            <!--<i class="fa fa-google-plus"></i> Connect with Google+-->
+          <!--</a>-->
+          <!--<a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">-->
+            <!--<i class="fa fa-twitter"></i> Connect with Twitter-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<hr>-->
+<!--</div>-->

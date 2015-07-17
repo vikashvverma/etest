@@ -1,27 +1,53 @@
 'use strict';
 
 angular.module('etestApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, $location,$mdSidenav,$timeout, Auth) {
+    var vm = this;
+    vm.isLoggedIn = Auth.isLoggedIn;
+    vm.isAdmin = Auth.isAdmin;
+    vm.getCurrentUser = Auth.getCurrentUser;
+    vm.years=[];
+    vm.branches=[];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    vm.logout = function () {
+      Auth.logout();
+      $location.path('/login');
+    };
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
+    vm.mainMenu = [
+      {
+        icon: "<i class='fa fa-lock'></i>",
+        title: "Verbal",
+        tooltip: "Verbal Test",
+        url: 'main.verbal'
+      },
+      {
+        icon: "<i class='fa fa-lock'></i>",
+        title: "Aptitude",
+        tooltip: "Aptitude Test",
+        url: 'main.aptitude'
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+    ];
+    vm.toggleSidenav = function(menuId) {
+      $mdSidenav(menuId).toggle();
     };
+    vm.userMenu = [
+      {
+        link : '',
+        title: 'Dashboard',
+        icon: 'dashboard'
+      },
+      {
+        link : '',
+        title: 'Friends',
+        icon: 'group'
+      },
+      {
+        link : '',
+        title: 'Messages',
+        icon: 'message'
+      }
+    ];
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
 
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
   });
