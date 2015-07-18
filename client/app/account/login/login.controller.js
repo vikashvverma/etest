@@ -13,7 +13,7 @@ angular.module('etestApp')
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
+        .then( function(message) {
           // Logged in, redirect to home
           $location.path('/');
         })

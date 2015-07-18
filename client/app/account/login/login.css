@@ -21,3 +21,35 @@
   background-color: #fafafa;
   border-color: #ccc;
 }
+
+
+md-whiteframe.login md-card md-card-content{
+  width:100%;
+}
+md-whiteframe.login md-card md-card-content>*,md-whiteframe.login md-card .md-actions{
+  width:100%;
+  padding: 10px;
+}
+md-whiteframe.login md-card .md-actions a{
+  background-color: transparent;
+  color: #2196f3;
+  text-decoration: none;
+}
+@media screen and (max-width: 300px) {
+  md-whiteframe.login md-card{
+    width:100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  md-whiteframe.login md-card{
+    min-width:80%;
+  }
+}
+
+
+@media screen and (min-width: 600px) {
+  md-whiteframe.login md-card{
+    min-width:500px;
+  }
+}

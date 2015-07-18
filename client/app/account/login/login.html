@@ -1,4 +1,40 @@
+<md-whiteframe class="md-whiteframe-z0 login" lyaout-padding layout="column" layout-align="center center" >
+  <form class="form" name="form" ng-submit="login(form)" novalidate>
+  <md-card class="md-padding" layout="column" layout-align="center center" >
 
+      <md-card-content layout="column" layout-align="center center" style="width: 100%;">
+        <h2 class="md-title" style="padding: 0px;">Login</h2>
+        <md-divider style="padding: 0px;"></md-divider>
+        <img src="assets/images/avatar.jpg" class="md-avatar" style="width:100px;border-radius: 50%;">
+        <md-input-container class="md-icon-float" >
+          <!-- Use floating label instead of placeholder -->
+          <label>username or email</label>
+          <md-icon  md-font-set="fa fa-user fa-2x  " class="name"></md-icon>
+          <input ng-model="user.email" type="text">
+        </md-input-container>
+        <md-input-container class="md-icon-float" >
+          <!-- Use floating label instead of placeholder -->
+          <label>password</label>
+          <md-icon  md-font-set="fa fa-unlock fa-2x  " class="name"></md-icon>
+          <input ng-model="user.password" type="password">
+        </md-input-container>
+        <md-button class="md-raised md-primary" type="submit">Sign in <i class="fa fa-sign-in"></i></md-button>
+        <md-list style="padding-top: 0px;padding-bottom: 0px;">
+          <md-list-item>
+            <md-checkbox ng-model="user.sign" class="md-primary"></md-checkbox>
+            <p>Stay signed in</p>
+          </md-list-item>
+        </md-list>
+        <md-divider style="padding: 0px;"></md-divider>
+      </md-card-content>
+
+      <div class="md-actions" layout="row" layout-align="space-between end" style="padding-top:0px;padding-bottom: 0px;">
+        <p ><a href="javascript:void(0)">Need help?</a></p>
+        <p ><a ui-sref="main.signup">Create an account</a></p>
+      </div>
+    </md-card>
+    </form>
+</md-whiteframe>
 
 
 <!--<div class="container">-->
