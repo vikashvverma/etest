@@ -16,13 +16,13 @@ angular.module('etestApp')
 
     vm.mainMenu = [
       {
-        icon: "<i class='fa fa-lock'></i>",
+        icon: "fa fa-lock fa-2x",
         title: "Verbal",
         tooltip: "Verbal Test",
         url: 'main.verbal'
       },
       {
-        icon: "<i class='fa fa-lock'></i>",
+        icon: "fa fa-lock",
         title: "Aptitude",
         tooltip: "Aptitude Test",
         url: 'main.aptitude'
@@ -35,17 +35,17 @@ angular.module('etestApp')
       {
         link : '',
         title: 'Dashboard',
-        icon: 'dashboard'
+        icon: 'fa fa-lock fa-2x'
       },
       {
         link : '',
         title: 'Friends',
-        icon: 'group'
+        icon: 'fa fa-lock fa-2x'
       },
       {
         link : '',
         title: 'Messages',
-        icon: 'message'
+        icon: 'fa fa-lock fa-2x'
       }
     ];
 

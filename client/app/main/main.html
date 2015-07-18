@@ -1,23 +1,30 @@
-<div  layout="column" style="padding-bottom: 15px;" class="main" >
+<div  layout="column" style="/*padding-bottom: 15px;*/" class="main" >
   <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" style="z-index:1001;">
     <md-toolbar class="md-tall ">
       <span flex></span>
       <div layout="column" class="md-toolbar-tools-bottom inset">
         <user-avatar></user-avatar>
         <span></span>
-        <div>Firstname Lastname</div>
-        <div>email@domainname.com</div>
+        <div>{{vm.getCurrentUser().first_name}} {{vm.getCurrentUser().last_name}}</div>
+        <div>{{vm.getCurrentUser().email}}</div>
       </div>
     </md-toolbar>
     <md-list>
+      <md-list-item ng-click="vm.logout();">
+        <md-icon md-font-set="fa fa-sign-out fa-2x "></md-icon>
+        <p> Logout </p>
+      </md-list-item>
       <md-list-item ng-repeat="item in vm.userMenu" ng-click="goToPerson(person.name, $event)">
-        <md-item-content md-ink-ripple layout="row" layout-align="start center">
-          <div class="inset">
-            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
-          </div>
-          <div class="inset">{{item.title}}
-          </div>
-        </md-item-content>
+        <md-icon md-font-set="{{item.icon}}"></md-icon>
+        <p> {{item.title}} </p>
+        <!--<md-item-content md-ink-ripple layout="row" layout-align="start center">-->
+          <!--<div class="inset">-->
+            <!--<md-icon md-font-set="{{item.icon}}"></md-icon>-->
+            <!--&lt;!&ndash;<ng-md-icon icon="{{item.icon}}"></ng-md-icon>&ndash;&gt;-->
+          <!--</div>-->
+          <!--<div class="inset">{{item.title}}-->
+          <!--</div>-->
+        <!--</md-item-content>-->
         <!--<md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': person.newMessage}"></md-icon>-->
       </md-list-item>
       <md-divider></md-divider>
@@ -38,7 +45,7 @@
 
   <md-toolbar etest-header style="position:fixed;z-index:1000;">
     <div class="md-toolbar-tools ">
-      <md-button class="md-icon-button" aria-label="Settings" >
+      <md-button class="md-icon-button" aria-label="Settings" ng-click="vm.toggleSidenav('right')">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 18" fit="" preserveAspectRatio="xMidYMid meet" style="pointer-events: none; display: block;">
           <path d="M0 0h18v18h-18z" fill="none"></path>
           <path d="M2 13.5h14v-1.5h-14v1.5zm0-4h14v-1.5h-14v1.5zm0-5.5v1.5h14v-1.5h-14z"></path>
@@ -60,13 +67,81 @@
     </div>
   </md-toolbar>
 
-  <md-content etest-content style="margin-top:64px;" ui-view>
+  <md-content etest-content style="margin-top:64px;min-height: calc(100vh - 128px)" ui-view>
 
 
     <md-whiteframe class="md-whiteframe-z1 hashtag" layout layout-align="center center">
-      <span>.md-whiteframe-z1</span>
+      <md-content style="width:100%;background: inherit;">
+        <h1 class="head-title">Preparing for Placement?</h1>
+      <h5 class="tag-line">Enange, Analyze and Improve your skills!</h5>
+        </svg>
+        <md-list class="head-list">
+          <md-list-item ng-click="">
+            <md-icon md-font-set="fa fa-power-off  "></md-icon>
+            <p> Take mock tests </p>
+          </md-list-item>
+          <md-list-item ng-click="">
+            <md-icon md-font-set="fa fa-power-off  "></md-icon>
+            <p> Analyze your performance </p>
+          </md-list-item>
+          <md-list-item ng-click="">
+            <md-icon md-font-set="fa fa-power-off  "></md-icon>
+            <p> Improve your skills </p>
+          </md-list-item>
+          </md-list>
+      </md-content>
     </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-z3 md-accent second" layout layout-padding  layout-align="center center">
+      <md-content style="width:100%;background: inherit;"  layout-sm="column" >
 
+        <h1 class="head-title">ETEST FOR YOU</h1>
+        <h5 class=tag-line>A platform where you can practice, analyze and improve your skills!</h5>
+        <div layout="row" layout-sm="column" layout-margin layout-fill layout-padding>
+          <div flex>
+            <md-list>
+
+          <md-list-item class="md-3-line" >
+            <md-icon md-font-set="fa fa-pencil-square-o fa-2x  " class="md-avatar"></md-icon>
+            <div class="md-list-item-text">
+              <h3> Mock Tests </h3>
+              <h4> company specific </h4>
+              <p> Take mock tests that resembles exact pattern of the original tests.</p>
+            </div>
+          </md-list-item>
+          <md-list-item class="md-3-line" >
+            <md-icon md-font-set="fa fa-pencil-square-o fa-2x  " class="md-avatar"></md-icon>
+            <div class="md-list-item-text">
+              <h3> Performance Metrics </h3>
+              <h4> See where you stand </h4>
+              <p> Analyze your performance metrics ans see where you stand in the crowd. </p>
+            </div>
+          </md-list-item>
+        </md-list>
+        </div>
+          <div flex>
+            <md-list>
+
+            <md-list-item class="md-3-line" >
+              <md-icon md-font-set="fa fa-cogs fa-2x  " class="md-avatar"></md-icon>
+              <div class="md-list-item-text">
+                <h3> Learning Resources </h3>
+                <h4> Explore the relevant material </h4>
+                <p> We provide you all necessary resources to ace the placement. </p>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-3-line" >
+              <md-icon md-font-set="fa fa-pencil-square-o fa-2x  " class="md-avatar"></md-icon>
+              <div class="md-list-item-text">
+                <h3> Interview Experience</h3>
+                <h4>Placed students' experience  </h4>
+                <p>Read what successful candidates say. </p>
+              </div>
+            </md-list-item>
+          </md-list></div>
+        </div>
+
+      </md-content>
+    </md-whiteframe>
 
     <p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare,
       cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
@@ -117,7 +192,84 @@
       Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer
       scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
     </p>
+    <md-whiteframe class="md-whiteframe-z5 md-accent third" layout layout-padding  layout-align="center center">
+      <md-content style="width:100%;background: inherit;" layout-margin layout-fill layout-padding layout-sm="column" layout-gt-sm="row">
 
+          <div flex>
+            <h4 style="padding-left:16px;color:#fff;">ABOUT</h4>
+            <md-list class="head-list" style="    margin-top: -16px;">
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Take mock tests </p>
+              </md-list-item>
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Analyze your performance </p>
+              </md-list-item>
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Improve your skills </p>
+              </md-list-item>
+            </md-list>
+          </div>
+          <div flex>
+            <h4 style="padding-left:16px;color:#fff;">ABOUT</h4>
+            <md-list class="head-list" style="    margin-top: -16px;">
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Take mock tests </p>
+              </md-list-item>
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Analyze your performance </p>
+              </md-list-item>
+              <md-list-item ng-click="">
+                <md-icon md-font-set="fa fa-power-off  "></md-icon>
+                <p> Improve your skills </p>
+              </md-list-item>
+            </md-list>
+          </div>
+        <div flex>
+          <h4 style="padding-left:16px;color:#fff;">ABOUT</h4>
+          <md-list class="head-list" style="    margin-top: -16px;">
+            <md-list-item ng-click="">
+              <md-icon md-font-set="fa fa-power-off  "></md-icon>
+              <p> Take mock tests </p>
+            </md-list-item>
+            <md-list-item ng-click="">
+              <md-icon md-font-set="fa fa-power-off  "></md-icon>
+              <p> Analyze your performance </p>
+            </md-list-item>
+            <md-list-item ng-click="">
+              <md-icon md-font-set="fa fa-power-off  "></md-icon>
+              <p> Improve your skills </p>
+            </md-list-item>
+          </md-list>
+        </div>
+
+    </md-whiteframe>
   </md-content>
+  <div style="bottom: 0;right:0;position: fixed;z-index: 1002;">
 
+    <md-fab-speed-dial md-open="false" md-direction="up"
+                       class="md-fling">
+      <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-warn">
+          <md-icon md-font-set="fa fa-bars fa-2x " style="vertical-align: text-bottom;"></md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <md-fab-actions>
+        <md-button aria-label="facebook" class="md-fab md-raised md-mini  facebook">
+          <md-icon md-font-set="fa fa-facebook fa-2x  " class="facebook"></md-icon>
+        </md-button>
+        <md-button aria-label="Google+" class="md-fab md-raised md-mini google">
+          <md-icon md-font-set="fa fa-google-plus fa-2x " class="google"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+  </div>
+  <md-toolbar style="background-color: #202020;" >
+
+    <span style="text-align: center;font-size:14px;line-height: 64px;">&copy; <a href="http://www.programminggeek.in" target="_blank" style="color:#428bca;text-decoration: none;"> Programming Geek</a>, All Rights Reserved</span>
+  </md-toolbar>
 </div>
