@@ -15,8 +15,8 @@ module.exports = {
   TWITTER_ID: 'app-id',
   TWITTER_SECRET: 'secret',
 
-  GOOGLE_ID: 'app-id',
-  GOOGLE_SECRET: 'secret',
+  GOOGLE_ID: '9260197397-rkjfm7op9hividvjc66rurtsiepbn332.apps.googleusercontent.com',
+  GOOGLE_SECRET: 'HG0l4ubad9j7CyliYiVI-i5g',
 
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''
