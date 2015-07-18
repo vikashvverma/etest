@@ -8,10 +8,12 @@ angular.module("etestApp").directive('etestHeader', function() {
     scope.$on('top', function() {
       //alert();
       $element.removeClass('md-whiteframe-z3');
+      $element.removeClass('nav-bar');
     });
     scope.$on('scrolling', function() {
       //alert();
       $element.addClass('md-whiteframe-z3');
+      $element.addClass('nav-bar');
     });
   }
 
