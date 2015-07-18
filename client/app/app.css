@@ -48,7 +48,7 @@ etest-header {
   position: fixed !important;
 }
 
-md-content md-whiteframe {
+md-content md-whiteframe.hashtag {
   background: rgb(3,169,244);
   padding: 20px;
   min-height: 200px;
