@@ -6,7 +6,7 @@ angular.module('etestApp')
       .state('main.login', {
         url: 'login',
         templateUrl: 'app/account/login/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl as vm'
       })
       .state('main.signup', {
         url: 'signup',

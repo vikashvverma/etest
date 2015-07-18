@@ -59,7 +59,7 @@ angular.module('etestApp')
       return $timeout(function () {
         vm.years = [
         ];
-        for (var i = new Date().getFullYear(); i <= 2020; i++) {
+        for (var i = new Date().getFullYear()-4; i <= 2020; i++) {
           vm.years.push(i);
         }
       }, 300);

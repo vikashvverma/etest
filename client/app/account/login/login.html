@@ -1,5 +1,5 @@
 <md-whiteframe class="md-whiteframe-z0 login" lyaout-padding layout="column" layout-align="center center" >
-  <form class="form" name="form" ng-submit="login(form)" novalidate>
+  <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
   <md-card class="md-padding" layout="column" layout-align="center center" >
 
       <md-card-content layout="column" layout-align="center center" style="width: 100%;">
@@ -10,13 +10,13 @@
           <!-- Use floating label instead of placeholder -->
           <label>username or email</label>
           <md-icon  md-font-set="fa fa-user fa-2x  " class="name"></md-icon>
-          <input ng-model="user.email" type="text">
+          <input ng-model="vm.user.email" type="text" required>
         </md-input-container>
         <md-input-container class="md-icon-float" >
           <!-- Use floating label instead of placeholder -->
           <label>password</label>
           <md-icon  md-font-set="fa fa-unlock fa-2x  " class="name"></md-icon>
-          <input ng-model="user.password" type="password">
+          <input ng-model="vm.user.password" type="password" required>
         </md-input-container>
         <md-button class="md-raised md-primary" type="submit">Sign in <i class="fa fa-sign-in"></i></md-button>
         <md-list style="padding-top: 0px;padding-bottom: 0px;">
