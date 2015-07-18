@@ -125,15 +125,10 @@
               <md-input-container class="input-field" flex>
 
                 <input ng-model="vm.user.username" id="username" type="text" class="validate" ng-required="true" aria-label="Username">
-                <i class="fa fa-spinner fa-pulse md-warn" ng-show="vm.user.username && usernameExists===undefined"></i>
-                <i class="fa fa-check green-text" ng-show="vm.user.username && usernameExists===false">Available</i>
-                <i class="fa fa-times red-text" ng-show="vm.user.username && usernameExists===true">Not Available</i>
                 <label for="username">username</label>
               </md-input-container>
               <md-input-container class="input-field" flex>
                 <input ng-model="vm.user.email" id="email" type="email" class="validate" ng-required="true" aria-label="Email">
-                <i class="fa fa-spinner fa-pulse md-warn" ng-show="vm.user.email && emailExists===undefined"></i>
-                <i class="fa fa-times red-text" ng-show="vm.user.email && emailExists===true">Email already registered!</i>
                 <label for="email">Email ID</label>
               </md-input-container>
               <md-input-container class="input-field" flex>
@@ -156,10 +151,16 @@
           </md-content>
       </form>
     </md-content>
+<md-divider></md-divider>
+    <div class="social-buttons">
+      <a href="#" class="social-button label" style="width:auto !important;box-shadow:none;"><md-button md-ink-ripple='#FFF' class="md-raised md-primary">Try Social Signup</md-button></a>
+      <a href="" class="social-button facebook" ng-click="vm.loginOauth('facebook')"><i class="fa fa-facebook"></i></a><a href="#" class="social-button twitter" ng-click="vm.loginOauth('twitter')"><i class="fa fa-twitter"></i></a><a href="#" class="social-button google" ng-click="vm.loginOauth('google')"><i class="fa fa-google"></i></a>
+    </div>
   </md-card-content>
+
   <div class="md-actions" layout="row" layout-align="end center">
-    <md-button>Action 1</md-button>
-    <md-button>Action 2</md-button>
+
+
   </div>
 </md-card>
 

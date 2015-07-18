@@ -3,7 +3,7 @@
 angular.module('etestApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window,$timeout,ngNotify) {
     var vm=this;
-    vm.user = {};
+    vm.user = {gender:'M'};
     vm.errors = {};
 
     vm.register = function(form) {
@@ -18,10 +18,17 @@ angular.module('etestApp')
         .catch( function(err) {
           err = err.data;
           vm.errors = {};
-            vm.notify(err.message);
-            angular.forEach(err.errors,function(error,field){
+            if(err.errors.hasOwnProperty('username')){
+              return vm.notify("Username already exists. Choose a different username!",'error');
+            }
+            if(err.errors.hasOwnProperty('email')){
+              return vm.notify("Email already registered. Choose a different email!",'error');
+            }
 
-            });
+            vm.notify("All fields are required!","error");
+            //angular.forEach(err.errors,function(error,field){
+            //
+            //});
 
           // Update validity of form fields that match the mongoose errors
           //angular.forEach(err.errors, function(error, field) {
