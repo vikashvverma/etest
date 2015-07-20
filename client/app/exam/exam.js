@@ -10,6 +10,10 @@ angular.module('etestApp')
       }).state('main.tcsverbal', {
         url: 'exam/tcs/verbal',
         templateUrl: 'app/exam/verbal/tcs/tcs.verbal.html',
-        controller: 'TCSVerbalController'
+        controller: 'TCSVerbalController as vm'
+      }).state('main.tcsverbalexam', {
+        url: 'exam/tcs/verbal/:id',
+        templateUrl: 'app/exam/verbal/tcs/tcs.verbal.exam.html',
+        controller: 'TCSVerbalExamController as vm'
       });
   });
