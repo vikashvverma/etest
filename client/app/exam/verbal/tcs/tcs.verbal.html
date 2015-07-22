@@ -39,7 +39,7 @@
         <article class="tcs-card"  ng-class="{'flipped':isFlipped}" >
           <header class="tcs-card__thumb"  layout="column" style="height:250px;">
             <!--<a href="#"><img src="assets/images/TCS_logo.svg"></a>-->
-            <md-subheader class="md-no-sticky"><div class="tcs-card__subtitle">{{test.title}}</div></md-subheader>
+            <md-subheader class="md-no-sticky" ng-click="isFlipped=!isFlipped" style="cursor: pointer;"><div class="tcs-card__subtitle">{{test.title}}</div></md-subheader>
             <md-divider></md-divider>
             <md-list id="first">
               <md-list-item >
@@ -84,7 +84,7 @@
             <!--<div class="tcs-card__subtitle">{{test.subtitle}}</div>-->
             <!--<p class="tcs-card__description">{{test.description}}</p>-->
           </div>
-          <md-button class="md-fab md-primary" aria-label="Eat cake" style="margin-bottom: -9px;" ng-click="vm.start($event,1)">
+          <md-button class="md-fab md-primary" aria-label="Start Test" style="margin-bottom: -9px;" ng-click="vm.start($event,1)">
             Start Test
           </md-button>
           <footer class="tcs-card__footer" >

@@ -146,12 +146,13 @@ angular.module('etestApp')
         targetEvent: ev,
       })
         .then(function(answer) {
-          alert('You said the information was "' + answer + '".');
+          $location.path('/exam/tcs/verbal/'+id)
         }, function() {
-          alert('You cancelled the dialog.');
+          //alert('You cancelled the dialog.');
         });
     };
     vm.controller=function($scope, $mdDialog) {
+      var vm=this;
       $scope.hide = function() {
         $mdDialog.hide();
       };
@@ -161,5 +162,20 @@ angular.module('etestApp')
       $scope.answer = function(answer) {
         $mdDialog.hide(answer);
       };
+      $scope.instructions=[
+        {
+        icon:'fa fa-hand-o-right',
+        instruction:'It is compulsory to use all the specific words mentioned in the Outline in your email. You can add other sentences of your choice, as appropriate'
+        },{
+          icon:'fa fa-hand-o-right',
+          instruction:'The name of the sender and receiver should be as given.'
+        },{
+          icon:'fa fa-hand-o-right',
+          instruction:'The email must contain a minimum of fifty words, or it will not be evaluated at all.'
+        },{
+          icon:'fa fa-hand-o-right',
+          instruction:'If the outline is not strictly followed (including the speific words used), or correct English (including spelling and grammar) is not used, the grade in this section will be poor.'
+        }
+      ];
     };
   });

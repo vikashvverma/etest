@@ -7,6 +7,12 @@
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+.shadow.md-fab{
+  font-size: 12px;
+}
+.shadow:hover{
+  box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21), 0 16px 28px 0 rgba(0, 0, 0, 0.22);
+}
 md-icon.nav{
   margin-top:-8px !important;
 }
@@ -370,7 +376,7 @@ md-icon.nav{
   border-left: 4px solid rgb(3,169,244);;
 }
 .back  #fourth .fa {
-  color: rgb(3,169,244);;
+  color: rgb(3,169,244);
 }
 .back  #fourth:hover {
   background: rgb(3,169,244);
@@ -378,4 +384,28 @@ md-icon.nav{
 }
 .back  #fourth:hover .fa {
   color: white;
+}
+
+md-dialog-content .list-item1:hover{
+  background-color: #5cb85c;
+  color: white;
+}
+md-dialog-content .list-item2:hover{
+  background-color: #0072B5;
+  color: white;
+}
+md-dialog-content .list-item3:hover{
+  background-color: #2C3E50;
+  color: white;
+}
+md-dialog-content .list-item4:hover{
+  background-color: rgb(3,169,244);
+  color: white;
+}
+
+
+.answer-textarea{
+  /*max-height:300px !important;*/
+  /*overflow-y: scroll !important;*/
+  /*resize:vertical !important;*/
 }

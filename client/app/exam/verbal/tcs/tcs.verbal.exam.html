@@ -1,1 +1,49 @@
-Verbal Exam
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <h3>
+      <span>TCS Verbal Test Set {{vm.test.set}}</span>
+    </h3>
+  </div>
+</md-toolbar>
+<md-divider></md-divider>
+<md-whiteframe class="md-whiteframe-z3" layout-padding layout="column" >
+ <p style="line-height: 1.5;color:#2C3E50;"><strong>{{vm.test.question}}</strong></p>
+  <p style="line-height: 1.5;margin-top: -10px;"><strong>Outline : </strong></p>
+  <p style="line-height: 1.5;margin-top: -10px;"><strong><i>{{vm.test.outline}}</i></strong></p>
+  <md-divider></md-divider>
+  <md-list>
+        <span ng-repeat="instruction in vm.test.instructions track by $index" style="font-size: 14px;line-height: 1;max-height:30px;">
+
+          <md-list-item ng-class="'list-item'+($index+1)" style="max-height: 35px;min-height: 35px;">
+            <md-icon md-font-set="{{instruction.icon}} fa-2x" style="margin-top: 0px;"></md-icon>
+            <p ng-bind-html="instruction.instruction"> </p>
+            <!--<p class="md-secondary">{{ test.last_attempt_by }}</p>-->
+          </md-list-item>
+          <md-divider></md-divider>
+        </span>
+  </md-list>
+  <md-input-container flex>
+    <label>Write your answer here...</label>
+    <textarea ng-model="vm.test.answer" ng-change="vm.setCount();" rows="5" class="answer-textarea"></textarea>
+  </md-input-container>
+  <div class="md-actions" layout="row" layout-align="space-around end">
+    <md-list style="padding-top: 0px;padding-bottom: 0px;">
+      <md-list-item>
+
+        <label><md-icon md-font-set="fa fa-clock-o" style="margin-right: 0;"></md-icon>{{vm.test.time.minute>9?vm.test.time.minute:'0'+vm.test.time.minute}}:{{vm.test.time.second>9?vm.test.time.second:'0'+vm.test.time.second}}</label>
+      </md-list-item>
+    </md-list>
+    <md-list style="padding-top: 0px;padding-bottom: 0px;">
+      <md-list-item>
+
+        <label>Word Count : {{vm.test.word}}</label>
+      </md-list-item>
+    </md-list>
+  </div>
+  <md-list>
+    <md-list-item>
+      <md-button class="md-raised md-primary" ng-click="vm.endTest($event);">Submit Answer <i class="fa fa-send"></i></md-button>
+    </md-list-item>
+  </md-list>
+</md-whiteframe>
+

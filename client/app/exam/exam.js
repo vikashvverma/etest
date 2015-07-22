@@ -15,5 +15,9 @@ angular.module('etestApp')
         url: 'exam/tcs/verbal/:id',
         templateUrl: 'app/exam/verbal/tcs/tcs.verbal.exam.html',
         controller: 'TCSVerbalExamController as vm'
+      }).state('main.tcsverbalexamresult', {
+        url: 'exam/tcs/verbal/:id/result',
+        templateUrl: 'app/exam/verbal/tcs/tcs.verbal.exam.result.html',
+        controller: 'TCSVerbalExamResultController as vm'
       });
   });
