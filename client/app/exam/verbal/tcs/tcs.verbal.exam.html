@@ -1,32 +1,26 @@
 <md-toolbar md-scroll-shrink>
   <div class="md-toolbar-tools">
     <h3>
-      <span>TCS Verbal Test Set {{vm.test.set}}</span>
+      <span>TCS Verbal Test {{vm.test.id}}</span>
     </h3>
   </div>
 </md-toolbar>
 <md-divider></md-divider>
 <md-whiteframe class="md-whiteframe-z3" layout-padding layout="column" >
- <p style="line-height: 1.5;color:#2C3E50;"><strong>{{vm.test.question}}</strong></p>
-  <p style="line-height: 1.5;margin-top: -10px;"><strong>Outline : </strong></p>
-  <p style="line-height: 1.5;margin-top: -10px;"><strong><i>{{vm.test.outline}}</i></strong></p>
-  <md-divider></md-divider>
-  <md-list>
-        <span ng-repeat="instruction in vm.test.instructions track by $index" style="font-size: 14px;line-height: 1;max-height:30px;">
 
-          <md-list-item ng-class="'list-item'+($index+1)" style="max-height: 35px;min-height: 35px;">
-            <md-icon md-font-set="{{instruction.icon}} fa-2x" style="margin-top: 0px;"></md-icon>
-            <p ng-bind-html="instruction.instruction"> </p>
-            <!--<p class="md-secondary">{{ test.last_attempt_by }}</p>-->
-          </md-list-item>
-          <md-divider></md-divider>
-        </span>
-  </md-list>
-  <md-input-container flex>
+  <span ng-if="!vm.test"  layout="column" layout-align="center center"><p>Loading question...</p><span ng-include=" 'components/loader/loader.html' " ></span></span>
+ <p style="line-height: 1.5;color:#2C3E50;" ng-if="vm.test.question"><strong>{{vm.test.question}}</strong></p>
+  <p style="line-height: 1.5;margin-top: -10px;" ng-if="vm.test.outline"><strong>Outline : </strong></p>
+  <p style="line-height: 1.5;margin-top: -10px;" ng-if="vm.test.outline"><strong><i>{{vm.test.outline}}</i></strong></p>
+  <md-divider></md-divider>
+  <span  ng-include=" 'app/exam/verbal/tcs/instructions.html' ">
+
+  </span>
+  <md-input-container flex >
     <label>Write your answer here...</label>
-    <textarea ng-model="vm.test.answer" ng-change="vm.setCount();" rows="5" class="answer-textarea"></textarea>
+    <textarea ng-model="vm.test.answer" ng-change="vm.setCount();" rows="5" class="answer-textarea" ng-disabled="!vm.test && !vm.test.question" spellcheck='false' ></textarea>
   </md-input-container>
-  <div class="md-actions" layout="row" layout-align="space-around end">
+  <div class="md-actions" layout="row" layout-align="space-around end" ng-if="vm.test && vm.test.question">
     <md-list style="padding-top: 0px;padding-bottom: 0px;">
       <md-list-item>
 
@@ -40,7 +34,7 @@
       </md-list-item>
     </md-list>
   </div>
-  <md-list>
+  <md-list ng-if="vm.test && vm.test.question">
     <md-list-item>
       <md-button class="md-raised md-primary" ng-click="vm.endTest($event);">Submit Answer <i class="fa fa-send"></i></md-button>
     </md-list-item>

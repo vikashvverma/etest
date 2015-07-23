@@ -1,1 +1,23 @@
-Verbal Result
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <h3>
+      <span>TCS Verbal Test {{vm.test.id ?vm.test.id:vm.id}} Result</span>
+    </h3>
+  </div>
+</md-toolbar>
+<md-divider></md-divider>
+<md-whiteframe class="md-whiteframe-z" layout layout-align="space-around center"    layout-margin layout-sm="column" layout-md="column" layout-gt-md="row"  style="overflow-y:hidden;">
+  <div class="tcs-card__subtitle">Question : {{vm.test.title}}</div>
+</md-whiteframe>
+<md-whiteframe class="md-whiteframe-z" layout layout-align="space-around center"    layout-margin layout-sm="column" layout-md="column" layout-gt-md="row"  style="overflow-y:hidden;">
+  <div style="line-height: 1.5;color:#2C3E50;">{{vm.test.question}}</div>
+</md-whiteframe>
+<md-whiteframe class="md-whiteframe-z" layout layout-align="space-around center"    layout-margin layout-sm="column" layout-md="column" layout-gt-md="row"  style="overflow-y:hidden;">
+  <div class="tcs-card__subtitle"><b>Your Answer</b> : <span id="verbal-exam-result">{{vm.test.answer}}</span></div>
+</md-whiteframe>
+
+<!--<div id="verbal-exam-result">-->
+<!--{{vm.test.answer}}-->
+  <!--your team members would be coming to office (in India) that day. You realize that you need to reschedule the call. You are a little busy so you send an email to the German client in Berlin. Write the email using following phrases : asdbkj KASDKHKA ASkHK-->
+  <!--The purpoce of a spell checker is to check the text four spelling and typeing errors. The checker finds errors througout the text. When the spell checker finds an questionable word, it highlights it and suggests the mpst likely variants too replace the questionable word. You can select the variant and replace the wrrd or leave the word unanged.-->
+<!--</div>-->

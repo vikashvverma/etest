@@ -314,6 +314,10 @@ md-icon.nav{
   /*text-align: center;*/
   /*line-height: 200px;*/
 }
+.flip .card .face p{
+  max-height: 162px;
+  overflow-y: hidden;
+}
 .flip .card .front {
   position: absolute;
   z-index: 1;
@@ -386,19 +390,19 @@ md-icon.nav{
   color: white;
 }
 
-md-dialog-content .list-item1:hover{
+md-dialog-content .list-item1:hover,span span .list-item1:hover{
   background-color: #5cb85c;
   color: white;
 }
-md-dialog-content .list-item2:hover{
+md-dialog-content .list-item2:hover,span .list-item2:hover{
   background-color: #0072B5;
   color: white;
 }
-md-dialog-content .list-item3:hover{
+md-dialog-content .list-item3:hover,span .list-item3:hover{
   background-color: #2C3E50;
   color: white;
 }
-md-dialog-content .list-item4:hover{
+md-dialog-content .list-item4:hover,span .list-item4:hover{
   background-color: rgb(3,169,244);
   color: white;
 }

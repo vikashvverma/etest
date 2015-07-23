@@ -1,4 +1,4 @@
-
+<span ng-if="vm.sets.length==0" ng-include=" 'components/loader/loader.html' " class="center-loader" layout layout-align="center center"></span>
 <md-whiteframe class="md-whiteframe-z" layout layout-align="space-around center"   layout-padding layout-margin layout-sm="column" layout-md="column" layout-gt-md="row" ng-repeat="set in vm.sets" style="overflow-y:hidden;">
 
   <div class="flip" ng-repeat="test in set.tests">
@@ -15,9 +15,9 @@
           </div>
           <div class="tcs-card__body">
             <div class="tcs-card__category"><a href="#">{{test.category}}</a></div>
-            <div class="tcs-card__title"><a href="#">{{test.title}}</a></div>
-            <div class="tcs-card__subtitle">{{test.subtitle}}</div>
-            <p class="tcs-card__description">{{test.description}}</p>
+            <div class="tcs-card__title"><a href="#">TCS Verbal Test {{test.id}}</a></div>
+            <div class="tcs-card__subtitle">{{test.title}}</div>
+            <p class="tcs-card__description">{{test.question}}</p>
           </div>
           <md-button class="md-fab md-primary" aria-label="Eat cake" style="margin-bottom: -5px;" ng-click="isFlipped=!isFlipped">
             <md-tooltip>
@@ -27,8 +27,8 @@
           </md-button>
           <footer class="tcs-card__footer" >
             <md-divider></md-divider>
-            <span class="icon"><i class="fa fa-clock-o"></i> {{test.duration}} Minutes</span>
-            <span class="icon "><i class="fa fa-check"></i>  {{ test.marks}} </span>
+            <span class="icon"><i class="fa fa-clock-o"></i> 10 Minutes</span>
+            <span class="icon "><i class="fa fa-check"></i>  100 </span>
             <span class="icon "><i class="fa fa-user"></i>  {{ test.highest_scorer}} ({{test.highest_score}}) </span>
             <span class="icon "><i class="fa fa-users"></i>  {{ test.count}} </span>
 
@@ -84,13 +84,13 @@
             <!--<div class="tcs-card__subtitle">{{test.subtitle}}</div>-->
             <!--<p class="tcs-card__description">{{test.description}}</p>-->
           </div>
-          <md-button class="md-fab md-primary" aria-label="Start Test" style="margin-bottom: -9px;" ng-click="vm.start($event,1)">
+          <md-button class="md-fab md-primary" aria-label="Start Test" style="margin-bottom: -9px;" ng-click="vm.start($event,test.id)">
             Start Test
           </md-button>
           <footer class="tcs-card__footer" >
             <md-divider></md-divider>
-            <span class="icon"><i class="fa fa-clock-o"></i> {{test.duration}} Minutes</span>
-            <span class="icon "><i class="fa fa-check"></i>  {{ test.marks}} </span>
+            <span class="icon"><i class="fa fa-clock-o"></i> 10 Minutes</span>
+            <span class="icon "><i class="fa fa-check"></i>  100 </span>
             <span class="icon "><i class="fa fa-user"></i>  {{ test.highest_scorer}} ({{test.highest_score}}) </span>
             <span class="icon "><i class="fa fa-users"></i>  {{ test.count}} </span>
 

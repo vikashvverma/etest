@@ -1,16 +1,4 @@
-<md-dialog aria-label="TCS Verbal Instructions">
-  <form>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>TCS Verbal Test Instructions</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-font-set="fa fa-times fa-2x"  aria-label="Close dialog"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-dialog-content style="padding:0px;">
-      <md-list>
+<md-list>
         <span ng-repeat="instruction in instructions track by $index" style="font-size: 14px;line-height: 2">
 
           <md-list-item ng-class="'list-item'+($index+1)">
@@ -21,16 +9,4 @@
           <md-divider></md-divider>
         </span>
 
-      </md-list>
-    </md-dialog-content>
-    <div class="md-actions" layout="row">
-      <span flex></span>
-      <md-button ng-click="cancel()" class="md-warn   shadow">
-        Cancel
-      </md-button>
-      <md-button ng-click="hide()" class="md-primary  shadow">
-        Proceed
-      </md-button>
-    </div>
-  </form>
-</md-dialog>
+</md-list>
