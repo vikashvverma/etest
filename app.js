@@ -65,7 +65,7 @@ etest.config(['$stateProvider', '$urlRouterProvider', '$facebookProvider', 'loca
       controller: 'errorController'
     });
 
-    $facebookProvider.setAppId('439085662893831');
+    $facebookProvider.setAppId('1473928212839583');
 
     // Load the facebook SDK asynchronously
     (function() {
