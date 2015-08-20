@@ -16,7 +16,7 @@ var TestSchema = new Schema({
   statistics:[{
     userId:{type:String,required:true},
     name:String,
-    marks:Number,
+    score:Number,
     error:Number,
     warnings:Number,
     attempted_on:{type:Date,default:new Date()}

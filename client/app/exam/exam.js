@@ -12,6 +12,7 @@ angular.module('etestApp')
         templateUrl: 'app/exam/verbal/tcs/tcs.verbal.html',
         controller: 'TCSVerbalController as vm'
       }).state('main.tcsverbalexam', {
+        authenticate:true,
         url: 'exam/tcs/verbal/:id',
         templateUrl: 'app/exam/verbal/tcs/tcs.verbal.exam.html',
         controller: 'TCSVerbalExamController as vm'

@@ -1,6 +1,7 @@
 'use strict';
 var _=require('lodash');
 var Test=require('./verbal.model');
+var debug = require('debug')('tcs.verbal.controller');
 // Get list of things
 exports.index = function(req, res) {
   Test.find({},function (err, tests) {
@@ -46,14 +47,74 @@ exports.fetch=function(req,res){
   });
 };
 exports.update=function(req,res){
-  Test.find({id:req.params.id},function(err,data){
+  Test.findOne({id:req.params.id},function(err,data){
     if(err) { return handleError(res, err); }
     if(!data) { return res.send(404); }
+    console.log(JSON.stringify(data,null,4));
     data.statistics.push(req.body);
     data.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, data);
     });
+  });
+};
+exports.getRankStatistics=function(req,res){
+  if(!req.query.userId){ return res.send(404); }
+  Test.find({id:req.params.id},function(err,data){
+    if(err) { return handleError(res, err); }
+    if(!data) { return res.send(404); }
+
+    var out=[];
+    for(var i=data.length-1;i>=0;i--){
+      var temp=[];
+      for(var j=data[i].statistics.length-1;j>=0;j--){
+        if(data[i].statistics[j].userId==req.query.userId)
+          temp.push(data[i].statistics[j].score);
+      }
+      out.push({id:data[i].id,name:'Set '+data[i].id,data:temp});
+    }
+    return res.json(out);
+  });
+};
+
+exports.getAllStatistics=function(req,res){
+  console.log('aaaaaaaaaaaaaaaaaa',req.query.userId);
+  if(!req.query.userId){ return res.send(404); }
+  Test.find({},function(err,data){
+    console.log('aaaa',err,data);
+    if(err) { return handleError(res, err); }
+    if(!data) { return res.send(404); }
+
+    var out=[];
+    for(var i=data.length-1;i>=0;i--){
+      var temp=[];
+      for(var j=data[i].statistics.length-1;j>=0;j--){
+        if(data[i].statistics[j].userId==req.query.userId)
+        temp.push(data[i].statistics[j].score);
+      }
+      out.push({id:data[i].id,name:'Set '+data[i].id,data:temp});
+    }
+    return res.json(out);
+  });
+};
+exports.getStatistics=function(req,res){
+  //console.log(1,req.query.userId);
+  if(!req.query.userId){ return res.send(404); }
+  Test.findOne({id:req.params.id},function(err,data){
+    //console.log(2,err);
+    //console.log(3,data);
+    if(err) { return handleError(res, err); }
+    if(!data) { return res.send(404); }
+   // console.log(4,data);
+    var result=data.statistics.filter(function(obj){
+      return obj.userId==req.query.userId;
+    });
+    //console.log(result);
+    result=result.map(function(obj){
+      return obj.score;
+    });
+    //console.log(result);
+    return res.json([{name:'Set '+ req.params.id,data:result}]);
   });
 };
 function handleError(res, err) {

@@ -8,7 +8,10 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:id', controller.fetch);
 //router.post('/', controller.create);
+
 router.use(auth.isAuthenticated());
+router.get('/stat/all',controller.getAllStatistics);
+router.get('/stat/:id',controller.getStatistics);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 //router.delete('/:id', controller.destroy);
