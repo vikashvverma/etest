@@ -85,6 +85,18 @@
       <md-radio-button value="spline">Spline</md-radio-button>
     </md-radio-group>
     </span>
+
+  <span layout="column" layout-align="center center">
+    <span ng-show="!vm.rankData">Loading...</span>
+  <etest-chart type="vm.rankType" data="vm.rankData" title="Rank"><div class="graph-loader"></div></etest-chart>
+    <md-radio-group ng-model="vm.rankType" style="    display: inline-flex;">
+      <md-radio-button value="bar" class="md-accent"> Bar </md-radio-button>
+      <md-radio-button value="column">Column</md-radio-button>
+      <md-radio-button value="line">Line</md-radio-button>
+      <md-radio-button value="spline">Spline</md-radio-button>
+    </md-radio-group>
+    </span>
+
   <span id="test-rank"></span>
 </md-whiteframe>
 <!--<div id="verbal-exam-result">-->

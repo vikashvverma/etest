@@ -408,8 +408,10 @@ angular.module('etestApp')
         };
 
         var options = {
+
           chart: {
-            type: type
+            type: type,
+            zoomType: 'x'
           },
           title: {
             text:title
@@ -420,7 +422,7 @@ angular.module('etestApp')
           xAxis: {
             min:1,
             categories:categories,
-            tickInterval:1
+            allowDecimals:false
           },
           yAxis: {
             title: {

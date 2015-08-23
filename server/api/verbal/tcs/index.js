@@ -11,6 +11,7 @@ router.get('/:id', controller.fetch);
 
 router.use(auth.isAuthenticated());
 router.get('/stat/all',controller.getAllStatistics);
+router.get('/stat/rank/:id',controller.getRankStatistics);
 router.get('/stat/:id',controller.getStatistics);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);

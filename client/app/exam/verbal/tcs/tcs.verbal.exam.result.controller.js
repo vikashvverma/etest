@@ -13,6 +13,7 @@ angular.module('etestApp')
       vm.result.name=Auth.getCurrentUser().name;
       vm.seriesType='spline';
       vm.resultType='column';
+      vm.rankType='spline';
       TCSVerbalService.updateTest(vm.id,vm.result)
         .success(function(data){
           vm.getGraphData();
@@ -21,13 +22,18 @@ angular.module('etestApp')
         });
 
       vm.getGraphData=function(){
-        TCSVerbalService.getAllStatistics(Auth.getCurrentUser()._id)
-          .success(function(data){
-            vm.seriesData=data;
-          });;
+
         TCSVerbalService.getStatistics(vm.id,Auth.getCurrentUser()._id)
           .success(function(data){
             vm.resultData=data;
+          });
+        TCSVerbalService.getAllStatistics(Auth.getCurrentUser()._id)
+          .success(function(data){
+            vm.seriesData=data;
+          });
+        TCSVerbalService.getRankStatistics(vm.id,Auth.getCurrentUser()._id)
+          .success(function(data){
+            vm.rankData=data;
           });
       };
       //vm.resultData=[54, 12, 14, 15, 54, 84, 54, 12, 52, 65, 0];

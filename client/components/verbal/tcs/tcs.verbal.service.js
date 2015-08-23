@@ -58,7 +58,7 @@ angular.module('etestApp')
             deferred.reject({reason:reason});
           },
           ready: function (msg) {
-            $log.info(msg);
+            //$log.info(msg);
             deferred.resolve({errorCount:msg})
           }
         });
@@ -158,19 +158,26 @@ angular.module('etestApp')
     };
 
     return {
+      getRankStatistics:function(id,userId){
+        return $http.get('/api/verbal/tcs/stat/rank/'+id,{params:{userId:userId}}).success(function(data){
+          //$log.info(data);
+        }).error(function(err){
+          //$log.error(err);
+        });
+      },
       getAllStatistics:function(userId){
         return $http.get('/api/verbal/tcs/stat/all',{params:{userId:userId}}).success(function(data){
-          $log.info(data);
+          //$log.info(data);
         }).error(function(err){
-          $log.error(err);
+          //$log.error(err);
         });
       },
       getStatistics:function(id,userId){
         return $http.get('/api/verbal/tcs/stat/'+id,{params:{userId:userId}}).success(function(data){
-          $log.info(data);
+          //$log.info(data);
           $q.resolve(data);
         }).error(function(err){
-          console.error(err);
+          //console.error(err);
           $q.reject(err);
         });
       },
@@ -199,10 +206,10 @@ angular.module('etestApp')
           url:'/api/verbal/tcs/' + id,
           data:testData
         }).success(function(data){
-          $log.info(data);
+          //$log.info(data);
           $q.resolve(data);
         }).error(function(err){
-          $log.error(err);
+          //$log.error(err);
           $q.reject(err);
         });
       },
