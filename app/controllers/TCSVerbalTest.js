@@ -398,6 +398,7 @@ angular.module('etest') .controller('TCSVerbalTestController', [
                 var chart = {
                     renderTo: 'container',
                     type: 'column',
+                    zoomType: 'x'
                     margin: 75,
                     options3d: {
                         enabled: true,
@@ -410,7 +411,8 @@ angular.module('etest') .controller('TCSVerbalTestController', [
                 $scope.cummulativeRanking(chart, 'overallRanking', $scope.getRankSeries($scope.allUserData), title, subtitle, xTitle, yTitle);
             } else {
                 $scope.cummulativeRanking({
-                    type: type
+                    type: type,
+                    zoomType: 'x'
                 }, 'overallRanking', $scope.getRankSeries($scope.allUserData), title, subtitle, xTitle, yTitle);
             }
             $(window) .scrollTop($('#overallRanking') .offset() .top);
