@@ -308,6 +308,13 @@ angular.module('etest') .controller('TCSVerbalTestController', [
                 $scope.drawRankGraph('line');
                 window.scrollTo(0, 0);
             }, 100);
+            $scope.$watch('allUserData',function(newdData){
+                    $scope.draw('3d column');
+                $scope.drawAll('spline');
+                $scope.drawRankGraph('line');
+                window.scrollTo(0, 0);
+
+            });
         };
         $rootScope.saveAnswer = function () {
             if ($scope.count < 50) {
