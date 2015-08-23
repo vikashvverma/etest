@@ -398,7 +398,7 @@ angular.module('etest') .controller('TCSVerbalTestController', [
                 var chart = {
                     renderTo: 'container',
                     type: 'column',
-                    zoomType: 'x'
+                    zoomType: 'x',
                     margin: 75,
                     options3d: {
                         enabled: true,
