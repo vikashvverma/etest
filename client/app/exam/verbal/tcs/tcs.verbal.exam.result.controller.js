@@ -14,6 +14,8 @@ angular.module('etestApp')
       vm.seriesType='spline';
       vm.resultType='column';
       vm.rankType='spline';
+
+      vm.timeout=$timeout(vm.result.spellcheck,0);
       TCSVerbalService.updateTest(vm.id,vm.result)
         .success(function(data){
           vm.getGraphData();
@@ -37,12 +39,12 @@ angular.module('etestApp')
           });
       };
       //vm.resultData=[54, 12, 14, 15, 54, 84, 54, 12, 52, 65, 0];
-
+      $scope.$on('$destroy', function () { $timeout.cancel(vm.timeout); });
     }
 
 
     //$timeout(vm.checkSpellingAndGrammar,2000);
     //vm.checkSpellingAndGrammar();
 
-    //$scope.$on('$destroy', function () { $interval.cancel(vm.interval); });
+
   });
