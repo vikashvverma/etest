@@ -213,6 +213,19 @@ angular.module('etestApp')
           $q.reject(err);
         });
       },
+      patchTest:function(testId,_id,testData){
+        return $http({
+          method:'PATCH',
+          url:'/api/verbal/tcs/' + testId+'/'+_id,
+          data:testData
+        }).success(function(data){
+          //$log.info(data);
+          $q.resolve(data);
+        }).error(function(err){
+          //$log.error(err);
+          $q.reject(err);
+        });
+      },
       resetTest: function (test) {
         currentTest = test;
       },

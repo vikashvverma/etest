@@ -16,6 +16,39 @@ angular.module('etestApp')
     vm.toggleSidenav = function(menuId) {
       $mdSidenav(menuId).toggle();
     };
+
+    vm.blogs=[{
+      heading:'Popular Tests',
+      items:[{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Verbal Test',
+        content:'Take online TCS verbal ability test and analyze your performance'
+      },{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Verbal Test Chrome App',
+        content:'Download our Chrome App from and take TCS Verbal ability test offline.'
+      },{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Analytical Ability Test',
+        content:'Take TCS Analytical Ability Test, analyze and improve your performance.'
+      }]
+    },{
+      heading:'Popular Blogs',
+      items:[{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Verbal Test',
+        content:'Take online TCS verbal ability test and analyze your performance'
+      },{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Verbal Test Chrome App',
+        content:'Download our Chrome App from and take TCS Verbal ability test offline.'
+      },{
+        image:'http://4.bp.blogspot.com/-ib-jTmEsx4E/Urk9CplFXrI/AAAAAAAAAhQ/aTVfjHAuQa8/s400/tcs1.jpg',
+        title:'TCS Analytical Ability Test',
+        content:'Take TCS Analytical Ability Test, analyze and improve your performance.'
+      }]
+    }];
+
     vm.mainMenu = [
       {
         icon: "fa fa-lock fa-2x",

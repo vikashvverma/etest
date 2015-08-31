@@ -79,7 +79,7 @@
         </svg>
       </md-button>
       <h2>
-        <span ui-sref="main">etest</span>
+        <span ui-sref="main" style="cursor:pointer;">etest</span>
       </h2>
       <span flex=""></span>
 
@@ -100,7 +100,7 @@
     <md-whiteframe class="md-whiteframe-z1 hashtag" layout layout-align="center center">
       <md-content style="width:100%;background: inherit;">
         <h1 class="head-title">Preparing for Placement?</h1>
-      <h5 class="tag-line">Enange, Analyze and Improve your skills!</h5>
+      <h5 class="tag-line">Engage, Analyze and Improve your skills!</h5>
         </svg>
         <md-list class="head-list">
           <md-list-item ng-click="">
@@ -161,7 +161,7 @@
               <div class="md-list-item-text">
                 <h3> Interview Experience</h3>
                 <h4>Placed students' experience  </h4>
-                <p>Read what successful candidates say. </p>
+                <p>Read what successful candidates have tosay. </p>
               </div>
             </md-list-item>
           </md-list></div>
@@ -169,56 +169,38 @@
 
       </md-content>
     </md-whiteframe>
-
-    <p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare,
-      cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
-
     <p>
       Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.
     </p>
+<span ng-repeat="set in vm.blogs">
+    <md-divider></md-divider>
+    <h2 style="text-align: center;" ng-bind="set.heading"></h2>
+<md-content layout-sm="column" layout-gt-md="row" layout-align="space-around center" >
 
-    <p>
-      Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros
-      singulis intellegam eu sit.
-    </p>
+  <md-card ng-repeat="item in set.items">
+    <img ng-src="{{item.image}}" class="md-card-image" alt="Blog Image">
+    <md-card-content>
+      <h2 class="md-title">{{item.title}}</h2>
+      <p>{{item.content}}
+      </p>
+    </md-card-content>
+    <md-divider></md-divider>
+    <div class="md-actions" layout="row" layout-align="start start">
+      <md-list style="padding-top: 0px;padding-bottom: 0px;">
+        <md-list-item>
+          <a ng-href="{{item.link}}">Share</a>
+        </md-list-item>
+      </md-list>
+      <md-list style="padding-top: 0px;padding-bottom: 0px;">
+        <md-list-item>
 
-    <p>
-      Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit.
-      Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
-    </p>
-
-    <p>
-      Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur
-      has te.
-    </p>
-
-    <p>
-      Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
-    </p>
-
-    <p>
-      Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam
-      suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
-    </p>
-
-    <p>
-      Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer
-      scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
-    </p>
-
-    <p>
-      Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
-    </p>
-
-    <p>
-      Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam
-      suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
-    </p>
-
-    <p>
-      Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer
-      scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
-    </p>
+          <label>Learn More <md-icon md-font-set="fa fa-external-link " style="height: inherit;"></md-icon></label>
+        </md-list-item>
+      </md-list>
+    </div>
+  </md-card>
+</md-content>
+  </span>
     <md-whiteframe class="md-whiteframe-z5 md-accent third" layout layout-padding  layout-align="center center">
       <md-content style="width:100%;background: inherit;" layout-margin layout-fill layout-padding layout-sm="column" layout-gt-sm="row">
 
@@ -273,7 +255,7 @@
             </md-list-item>
           </md-list>
         </div>
-
+      </md-content>
     </md-whiteframe>
   </md-content>
   <div style="bottom: 0;right:0;position: fixed;z-index: 1002;">
@@ -281,16 +263,19 @@
     <md-fab-speed-dial md-open="false" md-direction="up"
                        class="md-fling">
       <md-fab-trigger>
-        <md-button aria-label="menu" class="md-fab md-warn">
+        <md-button aria-label="menu" class="md-fab md-primary" >
           <md-icon md-font-set="fa fa-bars fa-2x " style="vertical-align: text-bottom;"></md-icon>
         </md-button>
       </md-fab-trigger>
       <md-fab-actions>
         <md-button aria-label="facebook" class="md-fab md-raised md-mini  facebook">
-          <md-icon md-font-set="fa fa-facebook fa-2x  " class="facebook"></md-icon>
+          <a href="https://www.facebook.com/vikashvverma" target="_blank"> <md-icon md-font-set="fa fa-facebook fa-2x  " class="facebook"></md-icon></a>
         </md-button>
-        <md-button aria-label="Google+" class="md-fab md-raised md-mini google">
-          <md-icon md-font-set="fa fa-google-plus fa-2x " class="google"></md-icon>
+        <md-button aria-label="Google+" class="md-fab md-raised md-mini google" >
+          <a href="https://www.google.com/+VikashVerma" target="_blank"> <md-icon md-font-set="fa fa-google-plus fa-2x " class="google"></md-icon></a>
+        </md-button>
+        <md-button aria-label="GitHub" class="md-fab md-raised md-mini github" >
+          <a href="https://www.github.com/vikashvverma" target="_blank"><md-icon md-font-set="fa fa-github fa-2x " class="github" ></md-icon></a>
         </md-button>
       </md-fab-actions>
     </md-fab-speed-dial>

@@ -24,13 +24,14 @@ exports.index = function (req, res) {
         var user = tests[i].statistics.reduce(function (prev, cur) {
           return prev.marks > cur.marks ? prev : cur;
         });
-        obj.highest_score = user.marks;
-        obj.highest_scorer = user.userId;
+        obj.highest_score = user.score;
+        obj.highest_scorer = user.name;
         user = tests[i].statistics.reduce(function (prev, cur) {
-          return prev.date > cur.marks ? prev : cur;
+          return prev.date > cur.date ? prev : cur;
         });
         obj.last_attempt_by = user.name;
         obj.last_attempt_on = user.attempted_on;
+        console.log(JSON.stringify(user,null,4));
       }
 
       obj.date = tests[i].created_on;
@@ -64,13 +65,39 @@ exports.update = function (req, res) {
     if (!data) {
       return res.send(404);
     }
-    console.log(JSON.stringify(data, null, 4));
     data.statistics.push(req.body);
     data.save(function (err) {
       if (err) {
         return handleError(res, err);
       }
-      return res.json(200, data);
+      return res.json(200, data.statistics.pop());
+    });
+  });
+};
+exports.patch = function (req, res) {
+  Test.findOne({id: req.params.testId}, function (err, data) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!data) {
+      return res.send(404);
+    }
+    var length=data.statistics.length,index=-1;
+    for(var i=0;i<length;i++){
+      if(data.statistics[i]._id==req.params.id){
+        index=i;
+        break;
+      }
+    }
+    if(i>=0){
+      data.statistics.splice(i,1);
+    }
+    data.statistics.push(req.body);
+    data.save(function (err) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.json(200, data.statistics[data.statistics.length-1]);
     });
   });
 };
@@ -99,7 +126,7 @@ exports.getRankStatistics = function (req, res) {
       }
       return obj.score;
     });
-    var stats = [0];
+    var stats = [];
     for (var key in out) {
       if (req.query.userId == key) {
         stats.push({
@@ -114,13 +141,14 @@ exports.getRankStatistics = function (req, res) {
     }
     stats=stats.sort(function(prev,next){
       if(prev.constructor==Object){
-        return prev.score>=next;
+        return prev.y<=next;
       }
       if(next.constructor==Object){
-        return prev>=next.score;
+        return prev<=next.y;
       }
-      return prev>=next;
+      return prev<=next;
     });
+    stats.unshift(0);
     return res.json([{name: 'Rank', data: stats}]);
   });
 };

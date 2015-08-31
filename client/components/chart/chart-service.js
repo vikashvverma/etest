@@ -420,7 +420,7 @@ angular.module('etestApp')
             text: ''
           },
           xAxis: {
-            min:1,
+            min:0,
             categories:categories,
             allowDecimals:false
           },

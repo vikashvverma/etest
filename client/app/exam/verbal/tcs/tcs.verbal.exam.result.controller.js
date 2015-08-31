@@ -10,14 +10,38 @@ angular.module('etestApp')
       vm.test = TCSVerbalService.get(vm.id);
       vm.result = TCSVerbalService.getTestTResult(vm.id);
       vm.result.userId=Auth.getCurrentUser()._id;
-      vm.result.name=Auth.getCurrentUser().name;
+      vm.result.name=Auth.getCurrentUser().name?Auth.getCurrentUser().name:Auth.getCurrentUser().first_name+" "+Auth.getCurrentUser().last_name;
       vm.seriesType='spline';
       vm.resultType='column';
       vm.rankType='spline';
+      vm._id='';
 
-      vm.timeout=$timeout(vm.result.spellcheck,0);
+      vm.timeout=$timeout(function(){
+        vm.result.spellcheck().then(function(data){
+          if(data.errorCount>0){
+            TCSVerbalService.notify("You have made "+data.errorCount+" mistake(s)!",'error');
+            vm.result.score-=10;
+          }else{
+            vm.result.score+=10;
+          }
+          if(vm._id){
+            TCSVerbalService.patchTest(vm.id,vm._id,vm.result).success(function(data){
+              $log.info("Score has been adjusted!",data)
+              TCSVerbalService.notify("Your score has been adjusted after checking spelling or grammatical error(s)!",'success');
+              vm.getGraphData();
+            });
+          }
+
+        },function(err){
+          TCSVerbalService.notify("Couldn't check spelling and grammar mistake(s)!",'error');
+        },function(data){
+          TCSVerbalService.notify("Checking Spelling and Grammar!",'info');
+        })
+      },0);
       TCSVerbalService.updateTest(vm.id,vm.result)
         .success(function(data){
+          $log.info(data);
+          vm._id=data._id;
           vm.getGraphData();
         }).error(function(err){
           vm.getGraphData();
