@@ -17,9 +17,11 @@ angular.module('etestApp')
       vm._id='';
 
       vm.timeout=$timeout(function(){
+        if(!vm.result.score) return;
         vm.result.spellcheck().then(function(data){
-          if(data.errorCount>0){
-            TCSVerbalService.notify("You have made "+data.errorCount+" mistake(s)!",'error');
+          var names=countNames(vm.test.names,vm.test.answer);
+          if((data.errorCount-names)>0){
+            TCSVerbalService.notify("You have made "+(data.errorCount-names)+" mistake(s)!",'error');
             vm.result.score-=10;
           }else{
             vm.result.score+=10;
@@ -69,6 +71,12 @@ angular.module('etestApp')
 
     //$timeout(vm.checkSpellingAndGrammar,2000);
     //vm.checkSpellingAndGrammar();
-
-
+    function countNames(names,string){
+      var count=0;
+      for(var i=names.length-1;i>=0;i--){
+        var len=names[i].length;
+        count+=(string.length-string.replace(/names[i]/g,''))/len;
+      }
+      return count;
+    }
   });

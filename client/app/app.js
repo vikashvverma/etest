@@ -47,13 +47,28 @@ var app=angular.module('etestApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location,$window,$sce,$timeout, Auth) {
+    //base url
+    var baseURI="http://localhost:9000/";
+    var first=true;
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      //$rootScope.comments="";
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
         }
+        if(!first){
+          $timeout(function(){
+            var url=baseURI+next.url;
+            //$('#commentbox').html('<div class="fb-comments tcs-card" data-href="'+url+'" data-num-posts="5" data-colorscheme="light" data-order-by="social" data-mobile="1" data-width="100%" data-version="v2.3" style="width:98%;"></div><script src="https://apis.google.com/js/plusone.js"> </script><div class="g-comments" data-href="'+url+'" data-width="'+($window.innerWidth-40)+'" data-first_party_property="BLOGGER" data-height="400" data-view_type="FILTERED_POSTMOD" style="min-height: 300px;"> </div>');
+            //FB.XFBML.parse($('#commentbox')[0]);
+          },0);
+        }
+        first=false;
+
+       // $rootScope.comments=$sce.trustAsHtml('<div class="fb-comments tcs-card" data-href="'+url+'" data-num-posts="5" data-colorscheme="light" data-order-by="social" data-mobile="1" data-width="100%" data-version="v2.3" style="width:98%;"></div><div class="g-comments" data-href="'+url+'" data-width="'+($window.innerWidth-40)+'" data-first_party_property="BLOGGER" data-height="400" data-view_type="FILTERED_POSTMOD" style="min-height: 300px;"> </div>');
+       // FB.XFBML.parse($('#commentbox')[0]);
       });
     });
   });

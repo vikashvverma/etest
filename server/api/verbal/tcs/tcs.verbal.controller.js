@@ -10,13 +10,15 @@ exports.index = function (req, res) {
     }
     //console.log(tests);
     tests = tests.sort(function (a, b) {
-      return a.id > b.id;
+      return a.id > b.id?1:-1;
     });
+    console.log(JSON.stringify(tests,null,4));
     var data = [];
     var set = {tests: []};
     for (var i = 0; i < tests.length; i++) {
       var obj = {};
       obj.id = tests[i].id;
+      obj.names=tests[i].names;
       obj.title = tests[i].title;
       obj.question = tests[i].question;
       obj.count = tests[i].statistics.length;
@@ -166,6 +168,9 @@ exports.getAllStatistics = function (req, res) {
     if (!data) {
       return res.send(404);
     }
+    data = data.sort(function (a, b) {
+      return a.id > b.id?-1:1;
+    });
 
     var out = [];
     for (var i = data.length - 1; i >= 0; i--) {

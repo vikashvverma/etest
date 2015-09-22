@@ -27,7 +27,12 @@
         </md-list>
         <md-divider style="padding: 0px;"></md-divider>
       </md-card-content>
-
+<md-divider></md-divider>
+    <div class="social-buttons">
+      <a href="#" class="social-button label" style="width:auto !important;box-shadow:none;"><md-button md-ink-ripple='#FFF' class="md-raised md-primary">Try Social Signin</md-button></a>
+      <a href="" class="social-button facebook" ng-click="vm.loginOauth('facebook')"><i class="fa fa-facebook"></i></a><a href="#" class="social-button twitter" ng-click="vm.loginOauth('twitter')"><i class="fa fa-twitter"></i></a><a href="#" class="social-button google" ng-click="vm.loginOauth('google')"><i class="fa fa-google"></i></a>
+    </div>
+    <md-divider></md-divider>
       <div class="md-actions" layout="row" layout-align="space-between end" style="padding-top:0px;padding-bottom: 0px;">
         <p ><a href="javascript:void(0)">Need help?</a></p>
         <p ><a ui-sref="main.signup">Create an account</a></p>

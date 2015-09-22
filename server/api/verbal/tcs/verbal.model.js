@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
 //});
 var TestSchema = new Schema({
   id:{type:Number,unique:true,required:true},
+  names:[{type:String}],
   title:String,
   question:{type:String,required:true},
   outline:{type:String,required:true},

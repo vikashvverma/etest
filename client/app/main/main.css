@@ -29,6 +29,13 @@ md-fab-speed-dial .md-button.github:hover,md-fab-speed-dial .md-button md-icon.g
   background-color: #333 !important;
   color:#fff !important;
 }
+md-fab-speed-dial .md-button md-icon.twitter{
+  color: #55acee !important;
+}
+md-fab-speed-dial .md-button.twitter:hover,md-fab-speed-dial .md-button md-icon.twitter:hover{
+  background-color: #55acee !important;
+  color:#fff !important;
+}
 md-whiteframe.second{
   background-color: #333;
   margin-top: 5px;
