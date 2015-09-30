@@ -54,6 +54,7 @@
               <label for="dob">Date of Birth
               </label>
               <i class="fa fa-birthday-cake prefix blue-text"></i>
+              <!--<md-datepicker ng-model="vm.user.dob" md-placeholder="Enter date" ng-required="true" id="dob" ></md-datepicker>-->
               <input ng-model="vm.user.dob"  ng-click="clicked();" type="date" id="dob" class=" datepicker" ng-required="true" aria-label="Date of Birth"/>
 
               <!--<mb-datepicker element-id='dob'-->
@@ -83,21 +84,21 @@
             <div layout layout-sm="column" layout-md="column">
 
               <md-input-container class="input-field" flex>
-                <md-select ng-model="vm.user.branch" md-on-open="vm.loadBranches()" style="min-width: 200px;">
+                <md-select ng-model="vm.user.branch" md-on-open="vm.loadBranches()" style="min-width: 200px;" placeholder="Select Branch">
                   <md-select-label>{{ vm.user.branch ? vm.user.branch : 'Select Branch' }}</md-select-label>
                   <md-option ng-value="branch" ng-repeat="branch in vm.branches">{{branch}}</md-option>
                 </md-select>
               </md-input-container>
 
               <md-input-container flex>
-                <md-select ng-model="vm.user.entryYear" md-on-open="vm.loadYears()" style="min-width: 200px;">
+                <md-select ng-model="vm.user.entryYear" md-on-open="vm.loadYears()" style="min-width: 200px;" placeholder="Select Entry Year">
                   <md-select-label>{{ vm.user.entryYear ? vm.user.entryYear : 'Select Entry Year' }}</md-select-label>
                   <md-option ng-value="year" ng-repeat="year in vm.years">{{year}}</md-option>
                 </md-select>
               </md-input-container>
 
               <md-input-container flex>
-                <md-select ng-model="vm.user.passingYear" md-on-open="vm.loadYears()" style="min-width: 200px;">
+                <md-select ng-model="vm.user.passingYear" md-on-open="vm.loadYears()" style="min-width: 200px;" placeholder="Select Passing Year">
                   <md-select-label>{{ vm.user.passingYear ? vm.user.passingYear : 'Select Passing Year' }}</md-select-label>
                   <md-option ng-value="year" ng-repeat="year in vm.years">{{year}}</md-option>
                 </md-select>
