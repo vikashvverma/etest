@@ -160,7 +160,7 @@ angular.module('etestApp')
     return {
       getRankStatistics:function(id,userId){
         return $http.get('/api/verbal/tcs/stat/rank/'+id,{params:{userId:userId}}).success(function(data){
-          //$log.info(data);
+          $log.info(data);
         }).error(function(err){
           //$log.error(err);
         });

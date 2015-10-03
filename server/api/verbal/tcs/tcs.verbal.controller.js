@@ -24,7 +24,7 @@ exports.index = function (req, res) {
       obj.count = tests[i].statistics.length;
       if (tests[i].statistics.length) {
         var user = tests[i].statistics.reduce(function (prev, cur) {
-          return prev.marks > cur.marks ? prev : cur;
+          return prev.score > cur.score ? prev : cur;
         });
         obj.highest_score = user.score;
         obj.highest_scorer = user.name;
@@ -129,17 +129,21 @@ exports.getRankStatistics = function (req, res) {
       return obj.score;
     });
     var stats = [];
-    for (var key in out) {
-      if (req.query.userId == key) {
-        stats.push({
-          y: out[key].avg,
-          marker: {
-            symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
-          }
-        })
-      } else {
-        stats.push(out[key].avg);
-      }
+    var temp={};
+    for(var key in out){
+      temp[out[key].avg]=temp[out[key].avg]?1+out[key].avg:1;
+    }
+    for(var key in temp) {
+      stats.push({y:Number(key),name:temp[key]});
+    }
+    var index=stats.indexOf(out[req.query.userId].avg);
+    if(index>=0){
+      stats[index]={
+        y: out[req.query.userId].avg,
+        marker: {
+          symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
+        }
+      };
     }
     stats=stats.sort(function(prev,next){
       if(prev.constructor==Object){
@@ -156,7 +160,6 @@ exports.getRankStatistics = function (req, res) {
 };
 
 exports.getAllStatistics = function (req, res) {
-  console.log('aaaaaaaaaaaaaaaaaa', req.query.userId);
   if (!req.query.userId) {
     return res.send(404);
   }

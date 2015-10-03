@@ -436,9 +436,9 @@ angular.module('etestApp')
           },
           tooltip: {
             crosshairs: true,
-            shared: true,
-            headerFormat: '<small><h3>{point.key}</h3></small><table>',
-            pointFormat: '<tr><td style="color: {series.color}">  : </td>' + '<td style="text-align: right"><b>{point.y} </b></td></tr>',
+            useHTML:true,
+            headerFormat: '<small><span>Count :  {point.key}</span></small><table>',
+            pointFormat: '<tr><td style="color: {series.color}">Score  : </td>' + '<td style="text-align: right"><b>{point.y} </b></td></tr>',
             footerFormat: '</table>'
           },
           plotOptions: plotOptions,

@@ -35,7 +35,7 @@ server.listen(config.port, config.ip, function () {
 
 //insert verbal questions
 //require('./api/verbal/tcs/insert')();
-require('./api/aptitude/insert')();
+//require('./api/aptitude/insert')();
 
 // Expose app
 exports = module.exports = app;
