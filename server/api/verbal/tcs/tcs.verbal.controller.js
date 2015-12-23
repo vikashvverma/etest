@@ -128,33 +128,48 @@ exports.getRankStatistics = function (req, res) {
       }
       return obj.score;
     });
+    // var stats = [];
+    // for (var key in out) {
+    //   if (req.query.userId == key) {
+    //     stats.push({
+    //       y: out[key].avg,
+    //       marker: {
+    //         symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
+    //       }
+    //     })
+    //   } else {
+    //     stats.push(out[key].avg);
+    //   }
+    // }
     var stats = [];
     var temp={};
     for(var key in out){
-      temp[out[key].avg]=temp[out[key].avg]?1+out[key].avg:1;
+      temp[out[key].avg]=temp[out[key].avg]?1+temp[out[key].avg]:1;
     }
     for(var key in temp) {
-      stats.push({y:Number(key),name:temp[key]});
-    }
-    var index=stats.indexOf(out[req.query.userId].avg);
-    if(index>=0){
-      stats[index]={
-        y: out[req.query.userId].avg,
+      if(out[req.query.userId].avg==Number(key)){
+        stats.push({
+        y: Number(key),
         marker: {
           symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
         }
-      };
+      });
+      }else{
+        stats.push(Number(key));
+      }
     }
+    console.log(JSON.stringify(stats,4,null));
     stats=stats.sort(function(prev,next){
       if(prev.constructor==Object){
-        return prev.y<=next;
+        return next-Number(prev.y);
       }
       if(next.constructor==Object){
-        return prev<=next.y;
+        return Number(next.y)-prev;
       }
-      return prev<=next;
+      return next-prev;
     });
-    stats.unshift(0);
+    if(stats.length&& stats[stats.length-1])
+    stats.push(0);
     return res.json([{name: 'Rank', data: stats}]);
   });
 };
